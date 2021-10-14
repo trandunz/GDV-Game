@@ -7,6 +7,8 @@ public class Script_CharacterMotor2D : MonoBehaviour
     private Rigidbody2D m_RigidBody;
     private Vector2 m_Velocity;
 
+    [SerializeField] private float TESTVARIABLE;
+
     [SerializeField] private LayerMask m_GroundLayer;
 
     [SerializeField] private float m_JumpPower;
