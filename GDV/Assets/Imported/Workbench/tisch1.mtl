@@ -1,0 +1,15 @@
+# Blender MTL File: 'tisch1.blend'
+# Material Count: 1
+
+newmtl Material
+Ns 201.960784
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.097285 0.097285 0.097285
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump tisch1_n.png
+map_Ka tisch1_o.png
+map_Kd tisch1.tif
