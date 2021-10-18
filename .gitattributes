@@ -2,3 +2,4 @@
 * text=auto
 Rock_01.bmp filter=lfs diff=lfs merge=lfs -text
 Rock_01_n.bmp filter=lfs diff=lfs merge=lfs -text
+*.bmp filter=lfs diff=lfs merge=lfs -text
