@@ -48,3 +48,11 @@ The following packages were updated:
   com.unity.2d.pixel-perfect from version 2.0.4 to 2.1.0
   com.unity.2d.psdimporter from version 2.1.5 to 2.1.6
   com.unity.2d.spriteshape from version 3.0.13 to 3.0.15
+
+=== Tue Oct 19 00:55:26 2021
+
+Packages were changed.
+Update Mode: mergeDefaultDependencies
+
+The following packages were added:
+  com.unity.postprocessing@2.3.0
