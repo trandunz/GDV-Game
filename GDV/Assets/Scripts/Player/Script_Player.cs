@@ -9,7 +9,7 @@ public class Script_Player : Script_CharacterMotor2D
         InitMotor();
     }
 
-    void Update()
+    void LateUpdate()
     {
         Motor();
     }

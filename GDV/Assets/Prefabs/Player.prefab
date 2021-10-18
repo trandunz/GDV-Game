@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1980081229429316403}
   - component: {fileID: 1980081229429316400}
   - component: {fileID: 1980081229429316401}
-  - component: {fileID: 1980081229429316414}
   - component: {fileID: 1980081229429316402}
   - component: {fileID: 955332883749660900}
+  - component: {fileID: 7837526626696853619}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -75,7 +75,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.8207547, b: 0.46480545, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 0}
   m_Sprites: []
@@ -148,27 +148,6 @@ MonoBehaviour:
   m_OptimizeGeometry: 1
   m_EnableTangents: 0
   m_GeometryCached: 0
---- !u!50 &1980081229429316414
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980081229429316415}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.60000014
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!61 &1980081229429316402
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -178,7 +157,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1980081229429316415}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 74bd6338b4c27654eabc7fa3c02c5910, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -191,7 +170,7 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
   m_Size: {x: 4.000001, y: 4}
   m_EdgeRadius: 0
@@ -210,6 +189,28 @@ MonoBehaviour:
   m_GroundLayer:
     serializedVersion: 2
     m_Bits: 256
-  m_JumpPower: 15
+  m_JumpPower: 40
   m_MovementSpeed: 5
-  m_MaxJumpTime: 0.4
+  m_MaxJumpTime: 0.35
+  m_MassScale: 0.1
+--- !u!50 &7837526626696853619
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980081229429316415}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4

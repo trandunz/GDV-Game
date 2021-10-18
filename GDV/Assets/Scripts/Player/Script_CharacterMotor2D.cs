@@ -8,6 +8,7 @@ public class Script_CharacterMotor2D : MonoBehaviour
     [SerializeField] protected float m_JumpPower;
     [SerializeField] protected float m_MovementSpeed;
     [SerializeField] protected float m_MaxJumpTime;
+    [SerializeField] protected float m_MassScale = 0.1f;
 
     protected Rigidbody2D m_RigidBody;
 
@@ -24,7 +25,7 @@ public class Script_CharacterMotor2D : MonoBehaviour
     {
         m_Velocity = Movement();
         m_Velocity *= m_MovementSpeed;
-        m_RigidBody.velocity = new Vector2(m_Velocity.x, m_RigidBody.velocity.y);
+        m_RigidBody.velocity = new Vector2(m_Velocity.x, m_RigidBody.velocity.y - (m_RigidBody.mass * m_MassScale)); // CHANGING MASS CHANGES GRAVITY! :)))
 
         Jump();
     }
