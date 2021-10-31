@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6911771051055932490}
   - component: {fileID: 4293117591105094517}
   - component: {fileID: 4888114131343577646}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: 2DCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6681250737469908865}
   - component: {fileID: 6681250737469908878}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: One-Way Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
