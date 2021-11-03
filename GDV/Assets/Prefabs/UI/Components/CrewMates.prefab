@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1122159824669681887}
   - component: {fileID: 1122159824669681885}
   - component: {fileID: 1122159824669681884}
+  - component: {fileID: 3863728500942860987}
   m_Layer: 5
   m_Name: CrewMates
   m_TagString: Untagged
@@ -78,6 +79,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3863728500942860987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122159824669681886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72063c70b258f44699b797affc451be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2884148022788856924
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Script_CrewMate : MonoBehaviour
 {
-    protected enum MATESTATE
+    public enum MATESTATE
     {
         UNASSIGNED = 0,
 
@@ -12,7 +12,7 @@ public class Script_CrewMate : MonoBehaviour
         ONROUTE,
         DOING
     }
-    protected enum MOOD
+    public enum MOOD
     {
         UNASSIGNED = 0,
 
@@ -23,12 +23,12 @@ public class Script_CrewMate : MonoBehaviour
         DEPRESSED
     }
 
-    [SerializeField] protected string m_Name = "Default";
-    [SerializeField] protected float m_Health = 100.0f;
-    [SerializeField] protected float m_Hunger = 100.0f;
-    [SerializeField] protected bool m_IsSelected = false;
-    [SerializeField] protected MATESTATE m_MateState = MATESTATE.UNASSIGNED;
-    [SerializeField] protected MOOD m_Mood = MOOD.UNASSIGNED;
+    public string m_Name = "John Doe";
+    public float m_Health = 100.0f;
+    public float m_Hunger = 100.0f;
+    public bool m_IsSelected = false;
+    public MATESTATE m_MateState = MATESTATE.UNASSIGNED;
+    public MOOD m_Mood = MOOD.UNASSIGNED;
 
     protected Animator m_Animator;
 
