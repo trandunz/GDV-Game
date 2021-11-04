@@ -301,8 +301,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 374.99988, y: 1.3397827}
-  m_SizeDelta: {x: 225, y: 100}
+  m_AnchoredPosition: {x: 303, y: -2.0228}
+  m_SizeDelta: {x: 148.87341, y: 66.165955}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8795402048832897911
 CanvasRenderer:
@@ -376,8 +376,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -124, y: 1.3397827}
-  m_SizeDelta: {x: 225, y: 100}
+  m_AnchoredPosition: {x: -124.4, y: -0.56293}
+  m_SizeDelta: {x: 142.30432, y: 63.246353}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5645565992102917251
 CanvasRenderer:
@@ -451,8 +451,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 126.99987, y: 1.3397827}
-  m_SizeDelta: {x: 225, y: 100}
+  m_AnchoredPosition: {x: 119.2, y: -0.0000066757}
+  m_SizeDelta: {x: 146.62549, y: 65.166885}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6476860739421532816
 CanvasRenderer:
@@ -716,6 +716,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf39240b2fcc5843a0d39dc610a7e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_MetalText: {fileID: 4354903508130345099}
+  m_FoodText: {fileID: 8068782240660476151}
+  m_ShipConditionText: {fileID: 693504375279291195}
+  m_BeastHungerText: {fileID: 2638914253345448584}
 --- !u!95 &4235090067197328826
 Animator:
   serializedVersion: 3
@@ -903,8 +907,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -373.00012, y: 1.3397827}
-  m_SizeDelta: {x: 225, y: 100}
+  m_AnchoredPosition: {x: -306.39, y: -0.000024796}
+  m_SizeDelta: {x: 139.7713, y: 62.120575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &16632158306354637
 CanvasRenderer:
