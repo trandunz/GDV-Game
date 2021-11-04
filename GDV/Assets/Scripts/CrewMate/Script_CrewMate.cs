@@ -7,16 +7,12 @@ public class Script_CrewMate : MonoBehaviour
 {
     protected enum MATESTATE
     {
-        UNASSIGNED = 0,
-
         IDLE,
         ONROUTE,
         DOING
     }
     protected enum MOOD
     {
-        UNASSIGNED = 0,
-
         INTOXICATED,
         HAPPY,
         CONTENT,
@@ -24,20 +20,17 @@ public class Script_CrewMate : MonoBehaviour
         DEPRESSED
     }
 
+    [SerializeField] protected GameManager m_GameManager;
+
     [SerializeField] protected string m_Name = "Default";
     [SerializeField] protected float m_Health = 100.0f;
     [SerializeField] protected float m_Hunger = 100.0f;
     [SerializeField] protected bool m_IsSelected = false;
-    [SerializeField] protected MATESTATE m_MateState = MATESTATE.UNASSIGNED;
-    [SerializeField] protected MOOD m_Mood = MOOD.UNASSIGNED;
+    [SerializeField] protected MATESTATE m_MateState;
+    [SerializeField] protected MOOD m_Mood;
 
+    [SerializeField] protected LayerMask m_GroundLayer;
     [SerializeField] protected float m_Speed;
-    [SerializeField] private Transform TargetPosition;
-
-    [SerializeField] protected float m_NextWaypointDistance;
-    [SerializeField] protected Path m_Path;
-    [SerializeField] protected int m_CurrentWaypoint = 0;
-    protected Seeker m_Seeker;
 
     protected Rigidbody2D m_RigidBody;
     protected Animator m_Animator;
@@ -51,30 +44,6 @@ public class Script_CrewMate : MonoBehaviour
         if (GetComponent<Animator>())
         {
             m_Animator = GetComponent<Animator>();
-        }
-
-        m_Mood = MOOD.CONTENT;
-        m_MateState = MATESTATE.IDLE;
-
-        m_Seeker = GetComponent<Seeker>();
-        TargetPosition.parent = null;
-        InvokeRepeating("UpdatePath", 0.0f, 0.5f);
-    }
-
-    void UpdatePath()
-    {
-        if(m_Seeker.IsDone() && TargetPosition)
-        {
-            m_Seeker.StartPath(m_RigidBody.position, TargetPosition.position, OnPathComplete);
-        }
-    }
-
-    void OnPathComplete(Path _Path)
-    {
-        if (!_Path.error)
-        {
-            m_Path = _Path;
-            m_CurrentWaypoint = 0;
         }
     }
 
@@ -96,27 +65,21 @@ public class Script_CrewMate : MonoBehaviour
             }
         }
 
-        //Move character to TargetPosition
-        if (m_MateState == MATESTATE.ONROUTE && m_Path != null && TargetPosition)
+        //Push back into world boundaries
+        if
+        (
+            transform.position.x < m_GameManager.m_WorldBoundaries[0] ||
+            transform.position.y < m_GameManager.m_WorldBoundaries[1] ||
+            transform.position.x > m_GameManager.m_WorldBoundaries[2] ||
+            transform.position.y > m_GameManager.m_WorldBoundaries[3]
+        )
         {
-            Vector2 MovementDirection = ((Vector2)m_Path.vectorPath[m_CurrentWaypoint] - m_RigidBody.position).normalized;
-
-            //Horizontal Movement
-            Vector2 MovementVector = Vector2.zero;
-            MovementVector.x = Mathf.Sign(MovementDirection.x) * m_Speed;
-            
-            
-            m_RigidBody.velocity = MovementVector;
-            
-            float Distance = Vector2.Distance(transform.position, m_Path.vectorPath[m_CurrentWaypoint]);
-
-            if (Distance < m_NextWaypointDistance)
-            {
-                m_CurrentWaypoint++;
-            }
+            transform.position = m_GameManager.m_CrewmateSpawnPostion;
         }
-        //Check if there is a wall on the player's side
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
+    }
 
+    bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(transform.position + new Vector3(0, -0.3f, 0), 0.25f, m_GroundLayer);
     }
 }

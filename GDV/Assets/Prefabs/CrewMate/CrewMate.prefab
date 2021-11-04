@@ -73,8 +73,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.9880939, y: 2.4953876, z: 1}
-  m_Center: {x: -0.006700158, y: -0.7476938, z: 0}
+  m_Size: {x: 4, y: 4, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2845969189073264833
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -103,7 +103,6 @@ GameObject:
   - component: {fileID: 4324652483144945971}
   - component: {fileID: 4324652483144945970}
   - component: {fileID: 4324652483144945969}
-  - component: {fileID: 7694726762296433132}
   - component: {fileID: -5306825715290784253}
   - component: {fileID: 5456837825565454960}
   m_Layer: 0
@@ -268,34 +267,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.000001, y: 4}
   m_EdgeRadius: 0
---- !u!114 &7694726762296433132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4324652483144945980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
 --- !u!114 &-5306825715290784253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,16 +279,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd077e43f377a04bb3ce475792d24c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: Default
+  m_GameManager: {fileID: 0}
+  m_Name: 
   m_Health: 100
   m_Hunger: 100
   m_IsSelected: 0
   m_MateState: 0
-  m_Mood: 0
+  m_Mood: 2
+  m_GroundLayer:
+    serializedVersion: 2
+    m_Bits: 1280
   m_Speed: 3
-  TargetPosition: {fileID: 1118632561}
-  m_NextWaypointDistance: 0.5
-  m_CurrentWaypoint: 0
 --- !u!50 &5456837825565454960
 Rigidbody2D:
   serializedVersion: 4
@@ -331,7 +303,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
