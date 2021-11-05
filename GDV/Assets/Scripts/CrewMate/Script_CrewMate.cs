@@ -5,13 +5,13 @@ using Pathfinding;
 
 public class Script_CrewMate : MonoBehaviour
 {
-    protected enum MATESTATE
+    public enum MATESTATE
     {
         IDLE,
         ONROUTE,
         DOING
     }
-    protected enum MOOD
+    public enum MOOD
     {
         INTOXICATED,
         HAPPY,
@@ -22,18 +22,20 @@ public class Script_CrewMate : MonoBehaviour
 
     [SerializeField] protected GameManager m_GameManager;
 
-    [SerializeField] protected string m_Name = "Default";
-    [SerializeField] protected float m_Health = 100.0f;
-    [SerializeField] protected float m_Hunger = 100.0f;
-    [SerializeField] protected bool m_IsSelected = false;
-    [SerializeField] protected MATESTATE m_MateState;
-    [SerializeField] protected MOOD m_Mood;
+    [SerializeField] public string m_Name = "John Doe";
+    [SerializeField] public float m_Health = 100.0f;
+    [SerializeField] public float m_Hunger = 100.0f;
+    [SerializeField] public bool m_IsSelected = false;
+    [SerializeField] public MATESTATE m_MateState;
+    [SerializeField] public MOOD m_Mood;
 
     [SerializeField] protected LayerMask m_GroundLayer;
     [SerializeField] protected float m_Speed;
 
     protected Rigidbody2D m_RigidBody;
     protected Animator m_Animator;
+
+    [SerializeField] ContactFilter2D m_BoundsContactFilter;
 
     void Start()
     {
@@ -71,7 +73,8 @@ public class Script_CrewMate : MonoBehaviour
             transform.position.x < m_GameManager.m_WorldBoundaries[0] ||
             transform.position.y < m_GameManager.m_WorldBoundaries[1] ||
             transform.position.x > m_GameManager.m_WorldBoundaries[2] ||
-            transform.position.y > m_GameManager.m_WorldBoundaries[3]
+            transform.position.y > m_GameManager.m_WorldBoundaries[3] ||
+            CollidingWithBoundary()
         )
         {
             transform.position = m_GameManager.m_CrewmateSpawnPostion;
@@ -81,5 +84,18 @@ public class Script_CrewMate : MonoBehaviour
     bool IsGrounded()
     {
         return Physics2D.OverlapCircle(transform.position + new Vector3(0, -0.3f, 0), 0.25f, m_GroundLayer);
+    }
+
+    bool CollidingWithBoundary()
+    {
+        List<Collider2D>CollidedObjects = new List<Collider2D>();
+        transform.GetComponent<BoxCollider2D>().OverlapCollider(m_BoundsContactFilter, CollidedObjects);
+
+        foreach (Collider2D Object in CollidedObjects)
+        {
+            if (Object.transform.GetComponent<GameManager>()) { return true; }
+        }
+
+        return false;
     }
 }
