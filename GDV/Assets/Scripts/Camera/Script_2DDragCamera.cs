@@ -48,11 +48,11 @@ public class Script_2DDragCamera : MonoBehaviour
 
     void DragCamera()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Mouse2))
         {
             m_DragOrigin = m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetKey(KeyCode.Mouse2))
         {
             Vector3 Difference = m_DragOrigin - m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
             m_MainCamera.transform.position = ClampCamera(m_MainCamera.transform.position + Difference);
