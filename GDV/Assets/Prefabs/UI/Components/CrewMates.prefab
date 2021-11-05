@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1122159824669681885}
   - component: {fileID: 1122159824669681884}
   - component: {fileID: 3863728500942860987}
-  - component: {fileID: 4646534318810566400}
   m_Layer: 5
   m_Name: CrewMates
   m_TagString: Untagged
@@ -92,27 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c72063c70b258f44699b797affc451be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CrewMatePanels: []
-  m_CrewMatePanelScripts: []
---- !u!95 &4646534318810566400
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1122159824669681886}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f8f064d0d6922c347a09b3aa027fdbac, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2884148022788856924
 PrefabInstance:
   m_ObjectHideFlags: 0

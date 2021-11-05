@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 8795402048832897911}
   - component: {fileID: 7557669381301636373}
   m_Layer: 5
-  m_Name: Status
+  m_Name: Image (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,8 +301,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 303, y: -2.0228}
-  m_SizeDelta: {x: 148.87341, y: 66.165955}
+  m_AnchoredPosition: {x: 374.99988, y: 1.3397827}
+  m_SizeDelta: {x: 225, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8795402048832897911
 CanvasRenderer:
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 5645565992102917251}
   - component: {fileID: 1560330016363839648}
   m_Layer: 5
-  m_Name: Food
+  m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,8 +376,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -124.4, y: -0.56293}
-  m_SizeDelta: {x: 142.30432, y: 63.246353}
+  m_AnchoredPosition: {x: -124, y: 1.3397827}
+  m_SizeDelta: {x: 225, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5645565992102917251
 CanvasRenderer:
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 6476860739421532816}
   - component: {fileID: 7034202147721463016}
   m_Layer: 5
-  m_Name: Condition
+  m_Name: Image (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,8 +451,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 119.2, y: -0.0000066757}
-  m_SizeDelta: {x: 146.62549, y: 65.166885}
+  m_AnchoredPosition: {x: 126.99987, y: 1.3397827}
+  m_SizeDelta: {x: 225, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6476860739421532816
 CanvasRenderer:
@@ -635,8 +635,6 @@ GameObject:
   - component: {fileID: 6601086024706403317}
   - component: {fileID: 6601086024706403315}
   - component: {fileID: 6601086024706403316}
-  - component: {fileID: 6082362614785749041}
-  - component: {fileID: 4235090067197328826}
   m_Layer: 5
   m_Name: Resources
   m_TagString: Untagged
@@ -664,7 +662,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.8698751}
   m_AnchorMax: {x: 0.9782223, y: 0.9647813}
-  m_AnchoredPosition: {x: 0, y: 259}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6601086024706403315
@@ -704,41 +702,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6082362614785749041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601086024706403318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adf39240b2fcc5843a0d39dc610a7e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MetalText: {fileID: 4354903508130345099}
-  m_FoodText: {fileID: 8068782240660476151}
-  m_ShipConditionText: {fileID: 693504375279291195}
-  m_BeastHungerText: {fileID: 2638914253345448584}
---- !u!95 &4235090067197328826
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601086024706403318}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 28f6bbeff38a60249a46ee0069b78175, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8063299957569980297
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,8 +870,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -306.39, y: -0.000024796}
-  m_SizeDelta: {x: 139.7713, y: 62.120575}
+  m_AnchoredPosition: {x: -373.00012, y: 1.3397827}
+  m_SizeDelta: {x: 225, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &16632158306354637
 CanvasRenderer:

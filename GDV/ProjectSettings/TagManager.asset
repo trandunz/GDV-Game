@@ -7,7 +7,6 @@ TagManager:
   - CrewMate
   - CrewMateManager
   - CrewMatePanel
-  - ResourcePanel
   layers:
   - Default
   - TransparentFX
@@ -19,7 +18,7 @@ TagManager:
   - 
   - Ground
   - RenderTextures
-  - 
+  - OneSidedPlatform
   - 
   - 
   - 
