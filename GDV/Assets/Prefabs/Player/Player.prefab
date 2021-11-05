@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1980081229429316402}
   - component: {fileID: 955332883749660900}
   - component: {fileID: 7837526626696853619}
-  - component: {fileID: 2494848879530655262}
   m_Layer: 0
   m_Name: Player
   m_TagString: CrewMate
@@ -190,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroundLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   m_JumpPower: 40
   m_MovementSpeed: 5
   m_MaxJumpTime: 0.35
@@ -216,24 +215,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &2494848879530655262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980081229429316415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd077e43f377a04bb3ce475792d24c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: Jane Doe
-  m_Health: 100
-  m_Hunger: 100
-  m_IsSelected: 0
-  m_MateState: 0
-  m_Mood: 0
 --- !u!1 &2589851968196672634
 GameObject:
   m_ObjectHideFlags: 0

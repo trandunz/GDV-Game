@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector2 m_DraggedCrewmateOffset;
     public Vector2 m_CrewmateSpawnPostion;
     public float[] m_WorldBoundaries;
+    public BoxCollider2D[] m_CollisionBoundaries;
 
     void Start()
     {
-        
+
     }
 
     void Update()
