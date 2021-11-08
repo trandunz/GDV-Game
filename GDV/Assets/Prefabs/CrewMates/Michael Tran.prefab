@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6865973668063190852}
   - component: {fileID: 6865973668063190853}
   - component: {fileID: 6865973668063190854}
-  - component: {fileID: 6131307886844129396}
   - component: {fileID: 2951550172581362695}
+  - component: {fileID: 6131307886844129396}
   m_Layer: 0
   m_Name: Michael Tran
   m_TagString: CrewMate
@@ -176,6 +176,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.000001, y: 4}
   m_EdgeRadius: 0
+--- !u!50 &2951550172581362695
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865973668063190859}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &6131307886844129396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd077e43f377a04bb3ce475792d24c4, type: 3}
   m_Name: Will Inman
   m_EditorClassIdentifier: 
-  m_GameManager: {fileID: 0}
   m_CrewmateName: Michael Tran
   m_Health: 100
   m_Hunger: 100
@@ -213,27 +233,6 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
---- !u!50 &2951550172581362695
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6865973668063190859}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 10
-  m_AngularDrag: 0
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!1 &7155259010997220359
 GameObject:
   m_ObjectHideFlags: 0
