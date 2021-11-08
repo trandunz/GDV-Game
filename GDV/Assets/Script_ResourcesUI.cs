@@ -16,8 +16,17 @@ public class Script_ResourcesUI : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI m_ShipConditionText;
     [SerializeField] TMPro.TextMeshProUGUI m_BeastHungerText;
 
+    Script_SpaceBeast m_SpaceBeast;
+
+    void Start()
+    {
+        m_SpaceBeast = GameObject.FindGameObjectWithTag("SpaceBeast").GetComponent<Script_SpaceBeast>();
+    }
+
     void Update()
     {
+        m_BeastHunger = (int)m_SpaceBeast.GetHunger();
+
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             m_bShowUI = !m_bShowUI;

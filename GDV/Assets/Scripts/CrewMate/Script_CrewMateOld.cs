@@ -19,7 +19,7 @@ public class Script_CrewMateOld : MonoBehaviour
         DEPRESSED
     }
 
-    [SerializeField] protected string m_Name = "Default";
+    [SerializeField] protected string m_CrewmateName = "Default";
     [SerializeField] protected float m_Health = 100.0f;
     [SerializeField] protected float m_Hunger = 100.0f;
     [SerializeField] protected bool m_IsSelected = false;

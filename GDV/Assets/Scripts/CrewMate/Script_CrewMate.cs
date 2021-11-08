@@ -21,7 +21,7 @@ public class Script_CrewMate : MonoBehaviour
 
     [SerializeField] protected GameManager m_GameManager;
 
-    [SerializeField] public string m_Name = "John Doe";
+    [SerializeField] public string m_CrewmateName = "John Doe";
     [SerializeField] public float m_Health = 100.0f;
     [SerializeField] public float m_Hunger = 100.0f;
     [SerializeField] public bool m_IsSelected = false;
