@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2c50c8a5907ee4a9057c819cbea36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: {fileID: 2436042529878691944}
+  m_CrewmateName: {fileID: 2436042529878691944}
   m_Mood: {fileID: 2955964179519273057}
   m_Heart: {fileID: 1515295890545651693}
   m_Energy: {fileID: 1378425213744661352}

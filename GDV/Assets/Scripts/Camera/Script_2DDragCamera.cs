@@ -13,7 +13,6 @@ public class Script_2DDragCamera : MonoBehaviour
 
     Vector3 m_DragOrigin;
     Camera m_MainCamera;
-    bool m_LockCamera = false;
     float m_BackgroundMinX, m_BackgroundMaxX, m_BackgroundMinY, m_BackgroundMaxY;
 
     #endregion
@@ -38,17 +37,14 @@ public class Script_2DDragCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!m_LockCamera)
+        DragCamera();
+        if (Input.mouseScrollDelta.y > 0)
         {
-            DragCamera();
-            if (Input.mouseScrollDelta.y > 0)
-            {
-                ZoomIn();
-            }
-            else if (Input.mouseScrollDelta.y < 0)
-            {
-                ZoomOut();
-            }
+            ZoomIn();
+        }
+        else if (Input.mouseScrollDelta.y < 0)
+        {
+            ZoomOut();
         }
     }
 
@@ -56,11 +52,11 @@ public class Script_2DDragCamera : MonoBehaviour
     {
         if (m_GameManager.m_SelectedCrewmate == null)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Mouse2) || Input.GetMouseButtonDown(0))
             {
                 m_DragOrigin = m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
             }
-            if (Input.GetMouseButton(0))
+            if (Input.GetKey(KeyCode.Mouse2) || Input.GetMouseButton(0))
             {
                 Vector3 Difference = m_DragOrigin - m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
                 m_MainCamera.transform.position = ClampCamera(m_MainCamera.transform.position + Difference);
