@@ -57,5 +57,8 @@ public class GameManager : MonoBehaviour
             Gizmos.DrawLine(new Vector3(m_WorldBoundaries[2], m_WorldBoundaries[3]), new Vector3(m_WorldBoundaries[0], m_WorldBoundaries[3]));
             Gizmos.DrawLine(new Vector3(m_WorldBoundaries[2], m_WorldBoundaries[3]), new Vector3(m_WorldBoundaries[2], m_WorldBoundaries[1]));
         }
+
+        //Draw Crewmate at origin
+        Gizmos.DrawWireCube(new Vector3(m_CrewmateSpawnPostion.x, m_CrewmateSpawnPostion.y), new Vector3(0.15f * 4.0f, 0.25f * 4.0f));
     }
 }
