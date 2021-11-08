@@ -32,17 +32,12 @@ public class Script_CrewMate : MonoBehaviour
     [SerializeField] protected LayerMask m_GroundLayer;
     [SerializeField] protected float m_Speed;
 
-    protected Rigidbody2D m_RigidBody;
     protected Animator m_Animator;
 
     [SerializeField] ContactFilter2D m_BoundsContactFilter;
 
     void Start()
     {
-        if (GetComponent<Rigidbody2D>())
-        {
-            m_RigidBody = GetComponent<Rigidbody2D>();
-        }
         if (GetComponent<Animator>())
         {
             m_Animator = GetComponent<Animator>();

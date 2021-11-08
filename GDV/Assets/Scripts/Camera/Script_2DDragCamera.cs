@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Script_2DDragCamera : MonoBehaviour
 {
+    [SerializeField] GameManager m_GameManager;
+
     [SerializeField] float m_ZoomStep = 1, m_MinCamSize = 1, m_MaxCamSize = 6;
     [SerializeField] SpriteRenderer m_BackgroundRenderer;
 
@@ -11,6 +13,7 @@ public class Script_2DDragCamera : MonoBehaviour
 
     Vector3 m_DragOrigin;
     Camera m_MainCamera;
+    bool m_LockCamera = false;
     float m_BackgroundMinX, m_BackgroundMaxX, m_BackgroundMinY, m_BackgroundMaxY;
 
     #endregion
@@ -35,27 +38,33 @@ public class Script_2DDragCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        DragCamera();
-        if (Input.mouseScrollDelta.y > 0)
+        if (!m_LockCamera)
         {
-            ZoomIn();
-        }
-        else if (Input.mouseScrollDelta.y < 0)
-        {
-            ZoomOut();
+            DragCamera();
+            if (Input.mouseScrollDelta.y > 0)
+            {
+                ZoomIn();
+            }
+            else if (Input.mouseScrollDelta.y < 0)
+            {
+                ZoomOut();
+            }
         }
     }
 
     void DragCamera()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (m_GameManager.m_SelectedCrewmate == null)
         {
-            m_DragOrigin = m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
-        }
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 Difference = m_DragOrigin - m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
-            m_MainCamera.transform.position = ClampCamera(m_MainCamera.transform.position + Difference);
+            if (Input.GetMouseButtonDown(0))
+            {
+                m_DragOrigin = m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
+            }
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 Difference = m_DragOrigin - m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
+                m_MainCamera.transform.position = ClampCamera(m_MainCamera.transform.position + Difference);
+            }
         }
     }
 

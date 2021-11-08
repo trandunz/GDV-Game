@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Camera m_MainCamera;
     public GameObject m_SelectedCrewmate;
     [SerializeField] private Vector2 m_DraggedCrewmateOffset;
     public Vector2 m_CrewmateSpawnPostion;
@@ -21,7 +20,7 @@ public class GameManager : MonoBehaviour
         //Select Crewmate
         if (Input.GetMouseButtonDown(0))
         {
-            Ray CursorRay = m_MainCamera.ScreenPointToRay(Input.mousePosition);
+            Ray CursorRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit[] CursorHits = Physics.RaycastAll(CursorRay);
             bool FoundCrewmate = false;
             uint CursorHitIndex = 0;
@@ -41,8 +40,9 @@ public class GameManager : MonoBehaviour
         //Drag Crewmate
         if (Input.GetMouseButton(0) && m_SelectedCrewmate != null)
         {
-            Vector3 CursorWorldPosition = m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 CursorWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             CursorWorldPosition.z = 0;
+            m_SelectedCrewmate.GetComponent<Rigidbody2D>().velocity = new Vector2(m_SelectedCrewmate.GetComponent<Rigidbody2D>().velocity.x, 0.0f);
             m_SelectedCrewmate.transform.position = CursorWorldPosition + new Vector3(m_DraggedCrewmateOffset.x, m_DraggedCrewmateOffset.y, m_SelectedCrewmate.transform.position.z);
         }
     }
