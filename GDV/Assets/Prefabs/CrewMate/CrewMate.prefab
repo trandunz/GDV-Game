@@ -103,8 +103,8 @@ GameObject:
   - component: {fileID: 4324652483144945971}
   - component: {fileID: 4324652483144945970}
   - component: {fileID: 4324652483144945969}
-  - component: {fileID: -5306825715290784253}
   - component: {fileID: 5456837825565454960}
+  - component: {fileID: -5306825715290784253}
   m_Layer: 0
   m_Name: CrewMate
   m_TagString: Player
@@ -267,6 +267,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.000001, y: 4}
   m_EdgeRadius: 0
+--- !u!50 &5456837825565454960
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4324652483144945980}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &-5306825715290784253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +301,7 @@ MonoBehaviour:
   m_Name: JohnDoe
   m_EditorClassIdentifier: 
   m_GameManager: {fileID: 0}
-  m_Name: JohnDoe
+  m_Name: John Doe
   m_Health: 100
   m_Hunger: 100
   m_IsSelected: 0
@@ -304,24 +325,3 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
---- !u!50 &5456837825565454960
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4324652483144945980}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
