@@ -19,7 +19,7 @@ public class Script_CrewMate : MonoBehaviour
         DEPRESSED
     }
 
-    [SerializeField] protected GameManager m_GameManager;
+    protected GameManager m_GameManager;
 
     [SerializeField] public string m_CrewmateName = "John Doe";
     [SerializeField] public float m_Health = 100.0f;
@@ -46,6 +46,8 @@ public class Script_CrewMate : MonoBehaviour
         {
             m_Animator = GetComponent<Animator>();
         }
+
+        m_GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     void FixedUpdate()

@@ -10,6 +10,7 @@ TagManager:
   - ResourcePanel
   - MissionPanel
   - SpaceBeast
+  - GameManager
   layers:
   - Default
   - TransparentFX
