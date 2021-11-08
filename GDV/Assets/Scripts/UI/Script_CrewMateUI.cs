@@ -8,6 +8,8 @@ public class Script_CrewMateUI : MonoBehaviour
     [SerializeField] List<GameObject> m_CrewMatePanels;
     [SerializeField] List<Script_CrewMatePanel> m_CrewMatePanelScripts;
 
+    bool m_bShowUI = true;
+
     private void Start()
     {
         m_CrewMateManager = GameObject.FindGameObjectWithTag("CrewMateManager").GetComponent<Script_CrewMateManager>();
@@ -26,7 +28,7 @@ public class Script_CrewMateUI : MonoBehaviour
         for (int i = 0; i < m_CrewMateManager.m_CrewMates.Length; i++)
         {
             Script_CrewMate mateScript = m_CrewMateManager.m_CrewMates[i].GetComponent<Script_CrewMate>();
-            m_CrewMatePanelScripts[i].m_Name.text = mateScript.m_Name;
+            m_CrewMatePanelScripts[i].m_CrewmateName.text = mateScript.m_CrewmateName;
             m_CrewMatePanelScripts[i].m_Mood.text = mateScript.m_Mood.ToString();
         }
     }
@@ -35,7 +37,7 @@ public class Script_CrewMateUI : MonoBehaviour
     {
         foreach (GameObject _Gameobject in m_CrewMatePanels)
         {
-            if (_Gameobject.GetComponent<Script_CrewMatePanel>().m_Name.text == "John Doe")
+            if (_Gameobject.GetComponent<Script_CrewMatePanel>().m_CrewmateName.text == "John Doe")
             {
                 _Gameobject.SetActive(false);
             }
@@ -48,6 +50,20 @@ public class Script_CrewMateUI : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            m_bShowUI = !m_bShowUI;
+
+            if (m_bShowUI)
+            {
+                GetComponent<Animator>().SetTrigger("Show");
+            }
+            else
+            {
+                GetComponent<Animator>().SetTrigger("Hide");
+            }
+        }
+
         UpdateCrewMateStats();
         CheckForEmptyPanel();
     }

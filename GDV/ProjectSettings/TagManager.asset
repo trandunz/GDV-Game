@@ -7,6 +7,10 @@ TagManager:
   - CrewMate
   - CrewMateManager
   - CrewMatePanel
+  - ResourcePanel
+  - MissionPanel
+  - SpaceBeast
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -43,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Text
+    uniqueID: 3160149389
     locked: 0
