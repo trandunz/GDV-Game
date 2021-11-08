@@ -7,6 +7,8 @@ TagManager:
   - CrewMate
   - CrewMateManager
   - CrewMatePanel
+  - ResourcePanel
+  - MissionPanel
   layers:
   - Default
   - TransparentFX

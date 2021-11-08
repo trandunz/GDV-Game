@@ -118,5 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d96e16f20fab5b4ebbd86783bfafda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxProgress: 100
+  m_MaxProgress: 10
   m_ProgressText: {fileID: 0}
+  m_StationType: 1

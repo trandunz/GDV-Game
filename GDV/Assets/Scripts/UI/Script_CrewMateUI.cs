@@ -8,6 +8,8 @@ public class Script_CrewMateUI : MonoBehaviour
     [SerializeField] List<GameObject> m_CrewMatePanels;
     [SerializeField] List<Script_CrewMatePanel> m_CrewMatePanelScripts;
 
+    bool m_bShowUI = true;
+
     private void Start()
     {
         m_CrewMateManager = GameObject.FindGameObjectWithTag("CrewMateManager").GetComponent<Script_CrewMateManager>();
@@ -48,6 +50,20 @@ public class Script_CrewMateUI : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            m_bShowUI = !m_bShowUI;
+
+            if (m_bShowUI)
+            {
+                GetComponent<Animator>().SetTrigger("Show");
+            }
+            else
+            {
+                GetComponent<Animator>().SetTrigger("Hide");
+            }
+        }
+
         UpdateCrewMateStats();
         CheckForEmptyPanel();
     }

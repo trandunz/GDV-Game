@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 5456837825565454960}
   m_Layer: 0
   m_Name: CrewMate
-  m_TagString: Player
+  m_TagString: CrewMate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: JohnDoe
   m_EditorClassIdentifier: 
   m_GameManager: {fileID: 0}
-  m_Name: John Doe
+  m_Name: JohnDoe
   m_Health: 100
   m_Hunger: 100
   m_IsSelected: 0
