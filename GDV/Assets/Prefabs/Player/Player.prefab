@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 1980081229429316400}
   - component: {fileID: 1980081229429316401}
   - component: {fileID: 1980081229429316402}
-  - component: {fileID: 955332883749660900}
   - component: {fileID: 7837526626696853619}
+  - component: {fileID: 955332883749660900}
+  - component: {fileID: 2474686269790849476}
   m_Layer: 0
   m_Name: Player
   m_TagString: CrewMate
@@ -175,25 +176,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.000001, y: 4}
   m_EdgeRadius: 0
---- !u!114 &955332883749660900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980081229429316415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ccc4881975d13640b27b787a3a290a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_GroundLayer:
-    serializedVersion: 2
-    m_Bits: 1280
-  m_JumpPower: 40
-  m_MovementSpeed: 5
-  m_MaxJumpTime: 0.35
-  m_MassScale: 0.1
 --- !u!50 &7837526626696853619
 Rigidbody2D:
   serializedVersion: 4
@@ -215,6 +197,62 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &955332883749660900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980081229429316415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ccc4881975d13640b27b787a3a290a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GroundLayer:
+    serializedVersion: 2
+    m_Bits: 1280
+  m_JumpPower: 40
+  m_MovementSpeed: 5
+  m_MaxJumpTime: 0.35
+  m_MassScale: 0.1
+--- !u!114 &2474686269790849476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980081229429316415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd077e43f377a04bb3ce475792d24c4, type: 3}
+  m_Name: Michael Tran
+  m_EditorClassIdentifier: 
+  m_GameManager: {fileID: 0}
+  m_Name: 
+  m_Health: 100
+  m_Hunger: 100
+  m_IsSelected: 0
+  m_MateState: 0
+  m_Mood: 0
+  m_GroundLayer:
+    serializedVersion: 2
+    m_Bits: 1280
+  m_Speed: 3
+  m_BoundsContactFilter:
+    useTriggers: 1
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 1
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
 --- !u!1 &2589851968196672634
 GameObject:
   m_ObjectHideFlags: 0
