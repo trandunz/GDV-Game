@@ -37,11 +37,7 @@ public class Script_CrewMate : MonoBehaviour
 
     void Start()
     {
-        if (GetComponent<Animator>())
-        {
-            m_Animator = GetComponent<Animator>();
-        }
-
+        if (GetComponent<Animator>()) { m_Animator = GetComponent<Animator>(); }
         m_GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
