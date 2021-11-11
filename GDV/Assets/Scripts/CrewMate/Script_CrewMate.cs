@@ -18,6 +18,12 @@ public class Script_CrewMate : MonoBehaviour
         SAD,
         DEPRESSED
     }
+    public enum CLASS
+    {
+        CHEF,
+        DOCTOR,
+        ENGINEER
+    }
 
     protected GameManager m_GameManager;
 
@@ -27,6 +33,7 @@ public class Script_CrewMate : MonoBehaviour
     [SerializeField] public bool m_IsSelected = false;
     [SerializeField] public MATESTATE m_MateState;
     [SerializeField] public MOOD m_Mood;
+    [SerializeField] public CLASS m_Class;
 
     [SerializeField] protected LayerMask m_GroundLayer;
     [SerializeField] protected float m_Speed;
@@ -43,6 +50,8 @@ public class Script_CrewMate : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (m_GameManager == null) { m_GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>(); }
+
         if (m_Animator)
         {
             if (m_MateState == MATESTATE.IDLE && !m_Animator.GetBool("Idle"))
