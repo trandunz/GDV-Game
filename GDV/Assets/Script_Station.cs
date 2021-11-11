@@ -17,10 +17,11 @@ public class Script_Station : MonoBehaviour
 
     float m_Progress = 0.0f;
     [SerializeField] float m_MaxProgress = 100.0f;
+    static float m_SpecialistBonusProgress = 2.0f; 
 
     [SerializeField] TMPro.TextMeshProUGUI m_ProgressText;
 
-    bool m_IsOccupied = false;
+    [SerializeField] List<Script_CrewMate>m_CurrentlyOccupying;
     int m_OccupantNumber = 0;
 
     [SerializeField] STATIONTYPE m_StationType = STATIONTYPE.UNASSIGNED;
@@ -37,9 +38,7 @@ public class Script_Station : MonoBehaviour
 
     void Update()
     {
-        m_IsOccupied = m_OccupantNumber > 0 ? true : false;
-
-        if (m_IsOccupied && m_StationType != STATIONTYPE.UNASSIGNED)
+        if (m_OccupantNumber > 0 && m_StationType != STATIONTYPE.UNASSIGNED)
         {
             if (m_Progress < m_MaxProgress)
             {
@@ -47,8 +46,18 @@ public class Script_Station : MonoBehaviour
                 {
                     case STATIONTYPE.BROKEN:
                         {
+                            uint SpecialistNumber = 0;
+                            foreach (Script_CrewMate CrewMate in m_CurrentlyOccupying)
+                            {
+                                if (CrewMate.m_Class == Script_CrewMate.CLASS.ENGINEER)
+                                {
+                                    SpecialistNumber++;
+                                }
+                            }
+
                             m_MaxProgress = 10;
-                            m_Progress += Time.deltaTime * m_OccupantNumber;
+                            m_Progress += Time.deltaTime * (m_OccupantNumber - (int)SpecialistNumber);
+                            m_Progress += Time.deltaTime * SpecialistNumber * m_SpecialistBonusProgress;
                             break;
                         }
                     case STATIONTYPE.COCKPIT:
@@ -70,11 +79,20 @@ public class Script_Station : MonoBehaviour
                         }
                     case STATIONTYPE.KITCHEN:
                         {
-                            //m_Sprites[1].SetActive(true);
+                            uint SpecialistNumber = 0;
+                            foreach (Script_CrewMate CrewMate in m_CurrentlyOccupying)
+                            {
+                                if (CrewMate.m_Class == Script_CrewMate.CLASS.CHEF)
+                                {
+                                    SpecialistNumber++;
+                                }
+                            }
+
                             m_MaxProgress = 30;
                             if (m_ResourcesUI.m_Food < 100)
                             {
-                                m_Progress += Time.deltaTime * m_OccupantNumber;
+                                m_Progress += Time.deltaTime * (m_OccupantNumber - (int)SpecialistNumber);
+                                m_Progress += Time.deltaTime * SpecialistNumber * m_SpecialistBonusProgress;
                             }
                             break;
                         }
@@ -90,6 +108,7 @@ public class Script_Station : MonoBehaviour
                     case STATIONTYPE.BROKEN:
                         {
                             m_Sprites[0].SetActive(false);
+                            m_Sprites[1].SetActive(true);
                             m_StationType = m_PostRepairType;
                             m_ResourcesUI.IncreaseShipCondition(10);
                             break;
@@ -110,14 +129,14 @@ public class Script_Station : MonoBehaviour
                         }
                     case STATIONTYPE.KITCHEN:
                         {
-                            int food = 25;
-                            while (food > 0)
+                            int Food = 25;
+                            while (Food > 0)
                             {
                                 if (m_ResourcesUI.m_Food < 100)
                                 {
                                     m_ResourcesUI.m_Food++;
                                 }
-                                food--;
+                                Food--;
                             }
                             break;
                         }
@@ -125,7 +144,7 @@ public class Script_Station : MonoBehaviour
                         break;
                 }
 
-                // Task Finishe
+                // Task Finishes
                 m_Progress = 0;
             }
 
@@ -154,6 +173,7 @@ public class Script_Station : MonoBehaviour
     {
         if(collision.tag is "CrewMate")
         {
+            m_CurrentlyOccupying.Add(collision.GetComponent<Script_CrewMate>());
             m_OccupantNumber++;
         }
     }
@@ -162,6 +182,7 @@ public class Script_Station : MonoBehaviour
     {
         if (collision.tag is "CrewMate")
         {
+            m_CurrentlyOccupying.Remove(collision.GetComponent<Script_CrewMate>());
             m_OccupantNumber--;
         }
     }
