@@ -8,7 +8,7 @@ public class Script_ResourcesUI : MonoBehaviour
 
     public int m_Metal = 0;
     public int m_Food = 0;
-    public int m_ShipCondition = 50;
+    public int m_ShipCondition = 20;
     public int m_BeastHunger = 0;
 
     [SerializeField] TMPro.TextMeshProUGUI m_MetalText;
@@ -52,6 +52,15 @@ public class Script_ResourcesUI : MonoBehaviour
         while (m_ShipCondition < 100 && i > 0)
         {
             m_ShipCondition++;
+            i--;
+        }
+    }
+    public void DecreaseShipCondition(int _amount)
+    {
+        int i = _amount;
+        while (m_ShipCondition < 100 && i > 0)
+        {
+            m_ShipCondition--;
             i--;
         }
     }

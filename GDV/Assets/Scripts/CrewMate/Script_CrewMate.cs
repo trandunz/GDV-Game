@@ -24,6 +24,7 @@ public class Script_CrewMate : MonoBehaviour
     [SerializeField] public string m_CrewmateName = "John Doe";
     [SerializeField] public float m_Health = 100.0f;
     [SerializeField] public float m_Hunger = 100.0f;
+    [SerializeField] public float m_Energy = 100.0f;
     [SerializeField] public bool m_IsSelected = false;
     [SerializeField] public MATESTATE m_MateState;
     [SerializeField] public MOOD m_Mood;

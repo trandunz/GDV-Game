@@ -725,9 +725,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_AdditionalShaderChannelsFlag: -1
+  m_SortingLayerID: -1134817907
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &714896277719685169
 MonoBehaviour:
@@ -1085,6 +1085,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Resources
       objectReference: {fileID: 0}
+    - target: {fileID: 7598742629624032763, guid: 5904c8601fbebbf40bbe652d94a1f8cf,
+        type: 3}
+      propertyPath: m_Metal
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5904c8601fbebbf40bbe652d94a1f8cf, type: 3}
 --- !u!224 &8974258010513553297 stripped
@@ -1100,10 +1105,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8974258009042662452}
     m_Modifications:
+    - target: {fileID: 1126246694474445430, guid: e0e6a6cb3f79a1e4aa3c1010016726b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 29.500061
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460039429523099778, guid: e0e6a6cb3f79a1e4aa3c1010016726b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.39996338
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681048697061824300, guid: e0e6a6cb3f79a1e4aa3c1010016726b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 29.500061
+      objectReference: {fileID: 0}
     - target: {fileID: 4201240212057630296, guid: e0e6a6cb3f79a1e4aa3c1010016726b1,
         type: 3}
       propertyPath: m_Name
       value: Missions
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406359365543845902, guid: e0e6a6cb3f79a1e4aa3c1010016726b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 29.500061
       objectReference: {fileID: 0}
     - target: {fileID: 5689301466598355732, guid: e0e6a6cb3f79a1e4aa3c1010016726b1,
         type: 3}
