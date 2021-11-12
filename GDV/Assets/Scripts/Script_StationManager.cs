@@ -11,6 +11,8 @@ public class Script_StationManager : MonoBehaviour
 
     [SerializeField] int m_MaxShipLevel = 3;
     [SerializeField] GameObject[] m_ShipLevels;
+    [SerializeField] GameObject[] m_Stations;
+    [SerializeField] GameObject[] m_StationText;
 
     void Start()
     {
@@ -32,6 +34,8 @@ public class Script_StationManager : MonoBehaviour
             DisableAllLevelObjects();
             m_ShipLevel++;
             m_ShipLevels[m_ShipLevel - 1].SetActive(true);
+            m_Stations[m_ShipLevel - 1].SetActive(true);
+            m_StationText[m_ShipLevel - 1].SetActive(true);
             m_Resources.m_Metal -= 100;
             
             
