@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
             CursorWorldPosition.z = 0;
             m_SelectedCrewmate.GetComponent<Rigidbody2D>().velocity = new Vector2(m_SelectedCrewmate.GetComponent<Rigidbody2D>().velocity.x, 0.0f);
             m_SelectedCrewmate.transform.position = CursorWorldPosition + new Vector3(m_DraggedCrewmateOffset.x, m_DraggedCrewmateOffset.y, m_SelectedCrewmate.transform.position.z);
+            m_SelectedCrewmate.transform.position = new Vector3(m_SelectedCrewmate.transform.position.x, m_SelectedCrewmate.transform.position.y, -1.0f);
         }
     }
 
@@ -59,6 +60,9 @@ public class GameManager : MonoBehaviour
         }
 
         //Draw Crewmate at origin
-        Gizmos.DrawWireCube(new Vector3(m_CrewmateSpawnPostion.x, m_CrewmateSpawnPostion.y), new Vector3(0.15f * 4.0f, 0.25f * 4.0f));
+        Gizmos.DrawWireCube(new Vector3(m_CrewmateSpawnPostion.x, m_CrewmateSpawnPostion.y), new Vector3(0.4f, 0.8f));
+
+        //Draw Dragging Point
+        Gizmos.DrawWireSphere(m_CrewmateSpawnPostion - m_DraggedCrewmateOffset - (Vector2.up * 0.4f), 0.1f);
     }
 }

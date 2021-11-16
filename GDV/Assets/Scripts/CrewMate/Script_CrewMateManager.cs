@@ -11,6 +11,7 @@ public class Script_CrewMateManager : MonoBehaviour
 
     void Start()
     {
+        m_GameManager = GameObject.FindGameObjectWithTag("GameManager");
         m_CrewMates = GameObject.FindGameObjectsWithTag("CrewMate");
         DontDestroyOnLoad(gameObject);
     }
