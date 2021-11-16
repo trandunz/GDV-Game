@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SelectedCrewmate: {fileID: 0}
-  m_DraggedCrewmateOffset: {x: 0, y: 0}
+  m_DraggedCrewmateOffset: {x: 0, y: -0.4}
   m_CrewmateSpawnPostion: {x: 0, y: 0}
   m_WorldBoundaries:
   - 0
