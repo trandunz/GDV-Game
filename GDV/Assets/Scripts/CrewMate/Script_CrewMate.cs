@@ -23,7 +23,8 @@ public class Script_CrewMate : MonoBehaviour
         STANDARD,
         CHEF,
         DOCTOR,
-        ENGINEER
+        ENGINEER,
+        FARMER
     }
 
 
@@ -34,7 +35,8 @@ public class Script_CrewMate : MonoBehaviour
     [SerializeField] public MATESTATE m_MateState;
     [SerializeField] public MOOD m_Mood;
     [SerializeField] public CREWCLASS m_CrewClass;
-    
+
+    [SerializeField] public float m_Energy;
     [SerializeField] public float m_Rest;
     [SerializeField] public float m_RestProgression = 0;
     [SerializeField] public float m_Health;
@@ -75,11 +77,14 @@ public class Script_CrewMate : MonoBehaviour
         }
 
         //Adjust stats
-        if (m_Rest < 0) { m_Rest = 0.0f; }
+        if (m_Rest > 0) { m_Rest -= 0.01f; } else { m_Rest = 0.0f; }
         if (m_Hunger > 0) { m_Hunger -= 0.01f; } else { m_Hunger = 0.0f; }
         if (m_Health > 100.0f) { m_Health = 100.0f; }
 
         if (m_Rest == 0 || m_Hunger == 0) { m_Health -= 1; }
+
+        m_Energy = 0;
+        m_Energy = (m_Health * 0.25f) + (m_Rest * 0.25f) + (m_Hunger * 0.5f);
 
         //Kill Crewmate
         if (m_Health <= 0) { Destroy(gameObject); }

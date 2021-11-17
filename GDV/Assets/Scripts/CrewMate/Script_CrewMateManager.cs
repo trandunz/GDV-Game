@@ -7,8 +7,6 @@ public class Script_CrewMateManager : MonoBehaviour
     public GameObject[] m_CrewMates;
     private GameObject m_GameManager;
 
-    public Script_CrewMate m_activeCrewmate;
-
     void Start()
     {
         m_GameManager = GameObject.FindGameObjectWithTag("GameManager");
