@@ -10,16 +10,15 @@ public class Script_Station : MonoBehaviour
 
         BROKEN,
         COCKPIT,
-        ENGINEERINGBAY,
+        ENGINEERINGBAY, //Unfinished
         MEDBAY,
         BUNKROOM,
-        KITCHEN
+        KITCHEN, //Unfinished
+        FARM
     };
 
-    float m_Progress = 0.0f;
-    float m_MaxProgress = 100.0f;
-    const float m_RestDecreaseRate = 2.0f;
-    const float m_SpecialistRestDecreaseRate = 1.0f;
+    [SerializeField] float m_Progress = 0.0f;
+    [SerializeField] float m_MaxProgress = 100.0f;
 
     [SerializeField] GameObject m_ProgressTextGameObject;
     TMPro.TextMeshProUGUI m_ProgressText;
@@ -60,11 +59,6 @@ public class Script_Station : MonoBehaviour
                                 if (CrewMate.GetComponent<Script_CrewMate>().m_CrewClass == Script_CrewMate.CREWCLASS.ENGINEER)
                                 {
                                     SpecialistNumber++;
-                                    CrewMate.GetComponent<Script_CrewMate>().m_Rest -= m_SpecialistRestDecreaseRate * Time.deltaTime;
-                                }
-                                else
-                                {
-                                    CrewMate.GetComponent<Script_CrewMate>().m_Rest -= m_RestDecreaseRate * Time.deltaTime;
                                 }
                             }
 
@@ -91,11 +85,6 @@ public class Script_Station : MonoBehaviour
                                 if (CrewMate.GetComponent<Script_CrewMate>().m_CrewClass == Script_CrewMate.CREWCLASS.DOCTOR)
                                 {
                                     SpecialistNumber++;
-                                    CrewMate.GetComponent<Script_CrewMate>().m_Rest -= m_SpecialistRestDecreaseRate * Time.deltaTime;
-                                }
-                                else
-                                {
-                                    CrewMate.GetComponent<Script_CrewMate>().m_Rest -= m_RestDecreaseRate * Time.deltaTime;
                                 }
                             }
 
@@ -133,17 +122,16 @@ public class Script_Station : MonoBehaviour
                         }
                     case STATIONTYPE.KITCHEN:
                         {
+                            break;
+                        }
+                    case STATIONTYPE.FARM:
+                        {
                             uint SpecialistNumber = 0;
                             foreach (GameObject CrewMate in m_CurrentlyOccupying)
                             {
-                                if (CrewMate.GetComponent<Script_CrewMate>().m_CrewClass == Script_CrewMate.CREWCLASS.CHEF)
+                                if (CrewMate.GetComponent<Script_CrewMate>().m_CrewClass == Script_CrewMate.CREWCLASS.FARMER)
                                 {
                                     SpecialistNumber++;
-                                    CrewMate.GetComponent<Script_CrewMate>().m_Rest -= m_SpecialistRestDecreaseRate * Time.deltaTime;
-                                }
-                                else
-                                {
-                                    CrewMate.GetComponent<Script_CrewMate>().m_Rest -= m_RestDecreaseRate * Time.deltaTime;
                                 }
                             }
 
@@ -179,6 +167,10 @@ public class Script_Station : MonoBehaviour
                             break;
                         }
                     case STATIONTYPE.KITCHEN:
+                        {
+                            break;
+                        }
+                    case STATIONTYPE.FARM:
                         {
                             int Food = 25;
                             while (Food > 0)
