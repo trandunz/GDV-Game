@@ -18,41 +18,78 @@ public class Script_CrewMate : MonoBehaviour
         SAD,
         DEPRESSED
     }
+    public enum CREWCLASS
+    {
+        STANDARD,
+        CHEF,
+        DOCTOR,
+        ENGINEER,
+        FARMER
+    }
+
 
     protected GameManager m_GameManager;
 
     [SerializeField] public string m_CrewmateName = "John Doe";
-    [SerializeField] public float m_Health = 100.0f;
-    [SerializeField] public float m_Hunger = 100.0f;
-    [SerializeField] public float m_Energy = 100.0f;
-    [SerializeField] public bool m_IsSelected = false;
+
     [SerializeField] public MATESTATE m_MateState;
     [SerializeField] public MOOD m_Mood;
+    [SerializeField] public CREWCLASS m_CrewClass;
+
+    [SerializeField] public float m_Energy;
+    [SerializeField] public float m_Rest;
+    [SerializeField] public float m_RestProgression = 0;
+    [SerializeField] public float m_Health;
+    [SerializeField] public float m_Hunger;
 
     [SerializeField] protected LayerMask m_GroundLayer;
-    [SerializeField] protected float m_Speed;
+    [SerializeField] ContactFilter2D m_BoundsContactFilter;
 
-    protected Rigidbody2D m_RigidBody;
     protected Animator m_Animator;
 
-    [SerializeField] ContactFilter2D m_BoundsContactFilter;
 
     void Start()
     {
-        if (GetComponent<Rigidbody2D>())
-        {
-            m_RigidBody = GetComponent<Rigidbody2D>();
-        }
-        if (GetComponent<Animator>())
-        {
-            m_Animator = GetComponent<Animator>();
-        }
-
+        if (GetComponent<Animator>()) { m_Animator = GetComponent<Animator>(); }
         m_GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     void FixedUpdate()
     {
+        //If the current GameManager does not exist, find a new GameManager and place the cremates at its spawn position
+        if (m_GameManager == null)
+        {
+            m_GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+            transform.position = m_GameManager.m_CrewmateSpawnPostion;
+        }
+
+        //Push back into world boundaries
+        if
+        (
+            transform.position.x < m_GameManager.m_WorldBoundaries[0] ||
+            transform.position.y < m_GameManager.m_WorldBoundaries[1] ||
+            transform.position.x > m_GameManager.m_WorldBoundaries[2] ||
+            transform.position.y > m_GameManager.m_WorldBoundaries[3] ||
+            CollidingWithBoundary()
+        )
+        {
+            transform.position = m_GameManager.m_CrewmateSpawnPostion;
+        }
+
+        //Adjust stats
+        if (m_Rest > 0) { m_Rest -= 0.01f; } else { m_Rest = 0.0f; }
+        if (m_Hunger > 0) { m_Hunger -= 0.01f; } else { m_Hunger = 0.0f; }
+        if (m_Health > 100.0f) { m_Health = 100.0f; }
+
+        if (m_Rest == 0 || m_Hunger == 0) { m_Health -= 1; }
+
+        m_Energy = 0;
+        m_Energy = (m_Health * 0.25f) + (m_Rest * 0.25f) + (m_Hunger * 0.5f);
+
+        //Kill Crewmate
+        if (m_Health <= 0) { Destroy(gameObject); }
+
+        //Animate Crewmate
         if (m_Animator)
         {
             if (m_MateState == MATESTATE.IDLE && !m_Animator.GetBool("Idle"))
@@ -67,19 +104,6 @@ public class Script_CrewMate : MonoBehaviour
             {
                 m_Animator.SetBool("Interact", true);
             }
-        }
-
-        //Push back into world boundaries
-        if
-        (
-            transform.position.x < m_GameManager.m_WorldBoundaries[0] ||
-            transform.position.y < m_GameManager.m_WorldBoundaries[1] ||
-            transform.position.x > m_GameManager.m_WorldBoundaries[2] ||
-            transform.position.y > m_GameManager.m_WorldBoundaries[3] ||
-            CollidingWithBoundary()
-        )
-        {
-            transform.position = m_GameManager.m_CrewmateSpawnPostion;
         }
     }
 

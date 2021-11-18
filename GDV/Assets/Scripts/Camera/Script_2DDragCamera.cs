@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Script_2DDragCamera : MonoBehaviour
 {
+    [SerializeField] GameManager m_GameManager;
+
     [SerializeField] float m_ZoomStep = 1, m_MinCamSize = 1, m_MaxCamSize = 6;
     [SerializeField] SpriteRenderer m_BackgroundRenderer;
 
@@ -48,14 +50,17 @@ public class Script_2DDragCamera : MonoBehaviour
 
     void DragCamera()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse2))
+        if (m_GameManager.m_SelectedCrewmate == null)
         {
-            m_DragOrigin = m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
-        }
-        if (Input.GetKey(KeyCode.Mouse2))
-        {
-            Vector3 Difference = m_DragOrigin - m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
-            m_MainCamera.transform.position = ClampCamera(m_MainCamera.transform.position + Difference);
+            if (Input.GetKeyDown(KeyCode.Mouse2) || Input.GetMouseButtonDown(0))
+            {
+                m_DragOrigin = m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
+            }
+            if (Input.GetKey(KeyCode.Mouse2) || Input.GetMouseButton(0))
+            {
+                Vector3 Difference = m_DragOrigin - m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
+                m_MainCamera.transform.position = ClampCamera(m_MainCamera.transform.position + Difference);
+            }
         }
     }
 
