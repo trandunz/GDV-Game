@@ -60,9 +60,9 @@ public class GameManager : MonoBehaviour
         }
 
         //Draw Crewmate at origin
-        Gizmos.DrawWireCube(new Vector3(m_CrewmateSpawnPostion.x, m_CrewmateSpawnPostion.y), new Vector3(0.4f, 0.8f));
+        Gizmos.DrawWireCube(new Vector3(m_CrewmateSpawnPostion.x, m_CrewmateSpawnPostion.y + 0.4f), new Vector3(0.4f, 0.8f));
 
         //Draw Dragging Point
-        Gizmos.DrawWireSphere(m_CrewmateSpawnPostion - m_DraggedCrewmateOffset - (Vector2.up * 0.4f), 0.1f);
+        Gizmos.DrawWireSphere(m_CrewmateSpawnPostion - m_DraggedCrewmateOffset, 0.1f);
     }
 }
