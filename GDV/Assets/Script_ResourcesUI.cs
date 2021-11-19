@@ -16,6 +16,8 @@ public class Script_ResourcesUI : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI m_ShipConditionText;
     [SerializeField] TMPro.TextMeshProUGUI m_BeastHungerText;
 
+    [SerializeField] GameObject[] m_ShipStatusImages;
+
     Script_SpaceBeast m_SpaceBeast;
 
     void Start()
@@ -43,7 +45,32 @@ public class Script_ResourcesUI : MonoBehaviour
 
         m_MetalText.text = "Metal: " + m_Metal;
         m_FoodText.text = "Food: " + m_Food;
-        m_ShipConditionText.text = "Condition: " + m_ShipCondition;
+        if (m_ShipCondition >= 100)
+        {
+            SetStatusImagesDisable();
+            m_ShipStatusImages[0].SetActive(true);
+        }
+        else if (m_ShipCondition >= 75)
+        {
+            SetStatusImagesDisable();
+            m_ShipStatusImages[1].SetActive(true);
+        }
+        else if (m_ShipCondition >= 50)
+        {
+            SetStatusImagesDisable();
+            m_ShipStatusImages[2].SetActive(true);
+        }
+        else if (m_ShipCondition >= 25)
+        {
+            SetStatusImagesDisable();
+            m_ShipStatusImages[3].SetActive(true);
+        }
+        else
+        {
+            SetStatusImagesDisable();
+            m_ShipStatusImages[3].SetActive(true);
+        }
+
         m_BeastHungerText.text = "Hunger: " + m_BeastHunger;
     }
     public void IncreaseShipCondition(int _amount)
@@ -62,6 +89,14 @@ public class Script_ResourcesUI : MonoBehaviour
         {
             m_ShipCondition--;
             i--;
+        }
+    }
+
+    void SetStatusImagesDisable()
+    {
+        foreach (GameObject item in m_ShipStatusImages)
+        {
+            item.SetActive(false);
         }
     }
 }
