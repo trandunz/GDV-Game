@@ -10,17 +10,20 @@ public class Script_Station : MonoBehaviour
 
         BROKEN,
         COCKPIT,
+        ENGINEERINGBAY, //Unfinished
         MEDBAY,
         BUNKROOM,
-        KITCHEN
+        KITCHEN, //Unfinished
+        FARM
     };
 
-    float m_Progress = 0.0f;
+    [SerializeField] float m_Progress = 0.0f;
     [SerializeField] float m_MaxProgress = 100.0f;
 
-    [SerializeField] TMPro.TextMeshProUGUI m_ProgressText;
+    [SerializeField] GameObject m_ProgressTextGameObject;
+    TMPro.TextMeshProUGUI m_ProgressText;
 
-    bool m_IsOccupied = false;
+    [SerializeField] List<GameObject>m_CurrentlyOccupying;
     int m_OccupantNumber = 0;
 
     [SerializeField] STATIONTYPE m_StationType = STATIONTYPE.UNASSIGNED;
@@ -33,22 +36,35 @@ public class Script_Station : MonoBehaviour
     private void Start()
     {
         m_ResourcesUI = GameObject.FindGameObjectWithTag("ResourcePanel").GetComponent<Script_ResourcesUI>();
+
+        m_ProgressTextGameObject = Instantiate(m_ProgressTextGameObject);
+        m_ProgressTextGameObject.transform.position = gameObject.transform.position + new Vector3(0.0f, 0.25f);
+        m_ProgressText = m_ProgressTextGameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>();
     }
 
     void Update()
     {
-        m_IsOccupied = m_OccupantNumber > 0 ? true : false;
-
-        if (m_IsOccupied && m_StationType != STATIONTYPE.UNASSIGNED)
+        if (m_OccupantNumber > 0 && m_StationType != STATIONTYPE.UNASSIGNED)
         {
+            //When a task is in progress
             if (m_Progress < m_MaxProgress)
             {
                 switch (m_StationType)
                 {
                     case STATIONTYPE.BROKEN:
                         {
+                            uint SpecialistNumber = 0;
+                            foreach (GameObject CrewMate in m_CurrentlyOccupying)
+                            {
+                                if (CrewMate.GetComponent<Script_CrewMate>().m_CrewClass == Script_CrewMate.CREWCLASS.ENGINEER)
+                                {
+                                    SpecialistNumber++;
+                                }
+                            }
+
                             m_MaxProgress = 10;
-                            m_Progress += Time.deltaTime * m_OccupantNumber;
+                            m_Progress += Time.deltaTime * (m_OccupantNumber - (int)SpecialistNumber);
+                            m_Progress += Time.deltaTime * SpecialistNumber * 2.0f;
                             break;
                         }
                     case STATIONTYPE.COCKPIT:
@@ -62,19 +78,68 @@ public class Script_Station : MonoBehaviour
                         }
                     case STATIONTYPE.MEDBAY:
                         {
+                            //Count how many doctors are at the bay
+                            uint SpecialistNumber = 0;
+                            foreach (GameObject CrewMate in m_CurrentlyOccupying)
+                            {
+                                if (CrewMate.GetComponent<Script_CrewMate>().m_CrewClass == Script_CrewMate.CREWCLASS.DOCTOR)
+                                {
+                                    SpecialistNumber++;
+                                }
+                            }
+
+                            //Heal crewmates
+                            foreach (GameObject CrewMate in m_CurrentlyOccupying)
+                            {
+                                CrewMate.GetComponent<Script_CrewMate>().m_Health += Time.deltaTime * (m_OccupantNumber - (int)SpecialistNumber);
+                                CrewMate.GetComponent<Script_CrewMate>().m_Health += Time.deltaTime * SpecialistNumber * 3.0f;
+                            }
+
+                            break;
+                        }
+                    case STATIONTYPE.ENGINEERINGBAY:
+                        {
                             break;
                         }
                     case STATIONTYPE.BUNKROOM:
                         {
+                            m_MaxProgress = 50;
+                            foreach (GameObject CrewMate in m_CurrentlyOccupying)
+                            {
+                                Script_CrewMate CrewMateScript = CrewMate.GetComponent<Script_CrewMate>();
+                                
+                                if (CrewMateScript.m_RestProgression > m_MaxProgress)
+                                {
+                                    if (CrewMateScript.m_Rest != 100) { CrewMateScript.m_Rest = 100.0f; }
+                                }
+                                else
+                                {
+                                    CrewMateScript.m_RestProgression += Time.deltaTime;
+                                }
+                            }
+
                             break;
                         }
                     case STATIONTYPE.KITCHEN:
                         {
-                            //m_Sprites[1].SetActive(true);
+                            break;
+                        }
+                    case STATIONTYPE.FARM:
+                        {
+                            uint SpecialistNumber = 0;
+                            foreach (GameObject CrewMate in m_CurrentlyOccupying)
+                            {
+                                if (CrewMate.GetComponent<Script_CrewMate>().m_CrewClass == Script_CrewMate.CREWCLASS.FARMER)
+                                {
+                                    SpecialistNumber++;
+                                }
+                            }
+
                             m_MaxProgress = 30;
                             if (m_ResourcesUI.m_Food < 100)
                             {
-                                m_Progress += Time.deltaTime * m_OccupantNumber;
+                                m_Progress += Time.deltaTime * (m_OccupantNumber - (int)SpecialistNumber);
+                                m_Progress += Time.deltaTime * SpecialistNumber * 2.0f;
                             }
                             break;
                         }
@@ -82,14 +147,15 @@ public class Script_Station : MonoBehaviour
                         break;
                 }
             }
+            //When a task from the station has been finished
             else if (m_Progress > m_MaxProgress)
             {
-
                 switch (m_StationType)
                 {
                     case STATIONTYPE.BROKEN:
                         {
                             m_Sprites[0].SetActive(false);
+                            m_Sprites[1].SetActive(true);
                             m_StationType = m_PostRepairType;
                             m_ResourcesUI.IncreaseShipCondition(10);
                             break;
@@ -100,24 +166,20 @@ public class Script_Station : MonoBehaviour
                             m_ResourcesUI.m_Food -= 25;
                             break;
                         }
-                    case STATIONTYPE.MEDBAY:
-                        {
-                            break;
-                        }
-                    case STATIONTYPE.BUNKROOM:
-                        {
-                            break;
-                        }
                     case STATIONTYPE.KITCHEN:
                         {
-                            int food = 25;
-                            while (food > 0)
+                            break;
+                        }
+                    case STATIONTYPE.FARM:
+                        {
+                            int Food = 25;
+                            while (Food > 0)
                             {
                                 if (m_ResourcesUI.m_Food < 100)
                                 {
                                     m_ResourcesUI.m_Food++;
                                 }
-                                food--;
+                                Food--;
                             }
                             break;
                         }
@@ -125,7 +187,7 @@ public class Script_Station : MonoBehaviour
                         break;
                 }
 
-                // Task Finishe
+                // Task Finishes
                 m_Progress = 0;
             }
 
@@ -142,11 +204,13 @@ public class Script_Station : MonoBehaviour
             m_OccupantNumber = 0;
         }
 
-        m_ProgressText.text = "Task Progress : " + (int) m_Progress + " / " + (int) m_MaxProgress;
-
         if (m_Progress == 0)
         {
             m_ProgressText.text = "";
+        }
+        else
+        {
+            m_ProgressText.text = "Task Progress : " + (int)m_Progress + " / " + (int)m_MaxProgress;
         }
     }
 
@@ -154,6 +218,7 @@ public class Script_Station : MonoBehaviour
     {
         if(collision.tag is "CrewMate")
         {
+            m_CurrentlyOccupying.Add(collision.gameObject);
             m_OccupantNumber++;
         }
     }
@@ -162,6 +227,8 @@ public class Script_Station : MonoBehaviour
     {
         if (collision.tag is "CrewMate")
         {
+            collision.GetComponent<Script_CrewMate>().m_RestProgression = 0.0f;
+            m_CurrentlyOccupying.Remove(collision.gameObject);
             m_OccupantNumber--;
         }
     }
