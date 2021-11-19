@@ -28,7 +28,7 @@ public class Script_CrewMate : MonoBehaviour
     }
 
 
-    protected GameManager m_GameManager;
+    [SerializeField] protected GameManager m_GameManager;
 
     [SerializeField] public string m_CrewmateName = "John Doe";
 
@@ -60,20 +60,28 @@ public class Script_CrewMate : MonoBehaviour
         if (m_GameManager == null)
         {
             m_GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-            transform.position = m_GameManager.m_CrewmateSpawnPostion;
+            transform.position = m_GameManager.m_Levels[m_GameManager.m_LevelIndex].GetComponent<LevelController>().m_CrewmateSpawnPostion;
         }
 
         //Push back into world boundaries
+        LevelController CurrentLevel = m_GameManager.m_Levels[m_GameManager.m_LevelIndex].GetComponent<LevelController>();
+
+        float[] WorldBoundaries = new float[4];
+        WorldBoundaries[0] = CurrentLevel.m_WorldBoundaries[0];
+        WorldBoundaries[1] = CurrentLevel.m_WorldBoundaries[1];
+        WorldBoundaries[2] = CurrentLevel.m_WorldBoundaries[2];
+        WorldBoundaries[3] = CurrentLevel.m_WorldBoundaries[3];
+
         if
         (
-            transform.position.x < m_GameManager.m_WorldBoundaries[0] ||
-            transform.position.y < m_GameManager.m_WorldBoundaries[1] ||
-            transform.position.x > m_GameManager.m_WorldBoundaries[2] ||
-            transform.position.y > m_GameManager.m_WorldBoundaries[3] ||
+            transform.position.x < WorldBoundaries[0] ||
+            transform.position.y < WorldBoundaries[1] ||
+            transform.position.x > WorldBoundaries[2] ||
+            transform.position.y > WorldBoundaries[3] ||
             CollidingWithBoundary()
         )
         {
-            transform.position = m_GameManager.m_CrewmateSpawnPostion;
+            transform.position = CurrentLevel.m_CrewmateSpawnPostion;
         }
 
         //Adjust stats
