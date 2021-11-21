@@ -5,7 +5,6 @@ using UnityEngine;
 public class Script_2DDragCamera : MonoBehaviour
 {
     [SerializeField] GameManager m_GameManager;
-
     [SerializeField] float m_ZoomStep = 1, m_MinCamSize = 1, m_MaxCamSize = 6;
     [SerializeField] SpriteRenderer m_BackgroundRenderer;
 
@@ -50,7 +49,7 @@ public class Script_2DDragCamera : MonoBehaviour
 
     void DragCamera()
     {
-        if (m_GameManager.m_SelectedCrewmate == null)
+        if (m_GameManager.m_CrewMateManager.m_SelectedCrewmate == null)
         {
             if (Input.GetKeyDown(KeyCode.Mouse2) || Input.GetMouseButtonDown(0))
             {
