@@ -21,7 +21,7 @@ public class Script_Station : MonoBehaviour
     [SerializeField] float m_MaxProgress = 100.0f;
 
     [SerializeField] GameObject m_ProgressTextGameObject;
-    TMPro.TextMeshProUGUI m_ProgressText;
+    [SerializeField] TMPro.TextMeshProUGUI m_ProgressText;
 
     [SerializeField] List<GameObject>m_CurrentlyOccupying;
     int m_OccupantNumber = 0;
@@ -36,10 +36,7 @@ public class Script_Station : MonoBehaviour
     private void Start()
     {
         m_ResourcesUI = GameObject.FindGameObjectWithTag("ResourcePanel").GetComponent<Script_ResourcesUI>();
-
-        m_ProgressTextGameObject = Instantiate(m_ProgressTextGameObject);
-        m_ProgressTextGameObject.transform.position = gameObject.transform.position + new Vector3(0.0f, 0.25f);
-        m_ProgressText = m_ProgressTextGameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>();
+        m_ProgressText = m_ProgressTextGameObject.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>();
     }
 
     void Update()
@@ -206,10 +203,12 @@ public class Script_Station : MonoBehaviour
 
         if (m_Progress == 0)
         {
-            m_ProgressText.text = "";
+            if (m_ProgressTextGameObject.activeSelf == true) { m_ProgressTextGameObject.SetActive(false); }
         }
         else
         {
+            if (m_ProgressTextGameObject.activeSelf == false) { m_ProgressTextGameObject.SetActive(true); }
+
             m_ProgressText.text = "Task Progress : " + (int)m_Progress + " / " + (int)m_MaxProgress;
         }
     }
