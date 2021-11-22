@@ -10,10 +10,10 @@ public class Script_Station : MonoBehaviour
 
         BROKEN,
         COCKPIT,
-        ENGINEERINGBAY, //Unfinished
+        ENGINEERINGBAY,
         MEDBAY,
         BUNKROOM,
-        KITCHEN, //Unfinished
+        KITCHEN,
         FARM
     };
 
@@ -21,7 +21,7 @@ public class Script_Station : MonoBehaviour
     [SerializeField] float m_MaxProgress = 100.0f;
 
     [SerializeField] GameObject m_ProgressTextGameObject;
-    [SerializeField] TMPro.TextMeshProUGUI m_ProgressText;
+    TMPro.TextMeshProUGUI m_ProgressText;
 
     [SerializeField] List<GameObject>m_CurrentlyOccupying;
     int m_OccupantNumber = 0;
@@ -36,7 +36,8 @@ public class Script_Station : MonoBehaviour
     private void Start()
     {
         m_ResourcesUI = GameObject.FindGameObjectWithTag("ResourcePanel").GetComponent<Script_ResourcesUI>();
-        m_ProgressText = m_ProgressTextGameObject.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>();
+
+        m_ProgressText = m_ProgressTextGameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>();
     }
 
     void Update()
@@ -96,6 +97,22 @@ public class Script_Station : MonoBehaviour
                         }
                     case STATIONTYPE.ENGINEERINGBAY:
                         {
+                            if (!m_ResourcesUI.m_ReadyToSearch)
+                            {
+                                uint SpecialistNumber = 0;
+                                foreach (GameObject CrewMate in m_CurrentlyOccupying)
+                                {
+                                    if (CrewMate.GetComponent<Script_CrewMate>().m_CrewClass == Script_CrewMate.CREWCLASS.ENGINEER)
+                                    {
+                                        SpecialistNumber++;
+                                    }
+                                }
+
+                                m_MaxProgress = 30;
+                                m_Progress += Time.deltaTime * (m_OccupantNumber - (int)SpecialistNumber);
+                                m_Progress += Time.deltaTime * SpecialistNumber * 2.0f;
+                            }
+
                             break;
                         }
                     case STATIONTYPE.BUNKROOM:
@@ -119,6 +136,16 @@ public class Script_Station : MonoBehaviour
                         }
                     case STATIONTYPE.KITCHEN:
                         {
+                            m_ResourcesUI.m_ChefInKitchen = false;
+                            foreach (GameObject CrewMate in m_CurrentlyOccupying)
+                            {
+                                if (CrewMate.GetComponent<Script_CrewMate>().m_CrewClass == Script_CrewMate.CREWCLASS.CHEF)
+                                {
+                                    m_ResourcesUI.m_ChefInKitchen = true;
+                                    break;
+                                }
+                            }
+
                             break;
                         }
                     case STATIONTYPE.FARM:
@@ -137,6 +164,7 @@ public class Script_Station : MonoBehaviour
                             {
                                 m_Progress += Time.deltaTime * (m_OccupantNumber - (int)SpecialistNumber);
                                 m_Progress += Time.deltaTime * SpecialistNumber * 2.0f;
+                                //Debug.Log("asdasdasdasd");
                             }
                             break;
                         }
@@ -163,8 +191,10 @@ public class Script_Station : MonoBehaviour
                             m_ResourcesUI.m_Food -= 25;
                             break;
                         }
-                    case STATIONTYPE.KITCHEN:
+                    case STATIONTYPE.ENGINEERINGBAY:
                         {
+                            m_ResourcesUI.m_ReadyToSearch = true;
+
                             break;
                         }
                     case STATIONTYPE.FARM:
@@ -187,8 +217,6 @@ public class Script_Station : MonoBehaviour
                 // Task Finishes
                 m_Progress = 0;
             }
-
-            Debug.Log("Task Progress : " + m_Progress + " / " + m_MaxProgress);
         }
         else
         {
@@ -203,13 +231,21 @@ public class Script_Station : MonoBehaviour
 
         if (m_Progress == 0)
         {
-            if (m_ProgressTextGameObject.activeSelf == true) { m_ProgressTextGameObject.SetActive(false); }
+            m_ProgressText.text = "";
+
+            if (m_ProgressTextGameObject.activeSelf)
+            {
+                m_ProgressTextGameObject.SetActive(false);
+            }
         }
         else
         {
-            if (m_ProgressTextGameObject.activeSelf == false) { m_ProgressTextGameObject.SetActive(true); }
-
             m_ProgressText.text = "Task Progress : " + (int)m_Progress + " / " + (int)m_MaxProgress;
+
+            if (!m_ProgressTextGameObject.activeSelf)
+            {
+                m_ProgressTextGameObject.SetActive(true);
+            }
         }
     }
 
@@ -229,6 +265,11 @@ public class Script_Station : MonoBehaviour
             collision.GetComponent<Script_CrewMate>().m_RestProgression = 0.0f;
             m_CurrentlyOccupying.Remove(collision.gameObject);
             m_OccupantNumber--;
+
+            if (m_StationType == STATIONTYPE.KITCHEN && m_OccupantNumber <= 0)
+            {
+                m_ResourcesUI.m_ChefInKitchen = false;
+            }
         }
     }
 }

@@ -5,10 +5,11 @@ using UnityEngine;
 public class Script_CrewMateManager : MonoBehaviour
 {
     public GameManager m_GameManager;
-    
+
     public GameObject[] m_CrewMates;
     public GameObject m_SelectedCrewmate;
     private Vector2 m_DraggedCrewmateOffset;
+
 
     void Start()
     {
