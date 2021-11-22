@@ -27,8 +27,9 @@ public class Script_CrewMate : MonoBehaviour
         FARMER
     }
 
-
-    [SerializeField] protected GameManager m_GameManager;
+    protected GameManager m_GameManager;
+    protected Script_ResourcesUI m_ResourcesUI;
+    [SerializeField] protected Script_WorldTimer m_WorldTimer;
 
     [SerializeField] public string m_CrewmateName = "John Doe";
 
@@ -52,6 +53,7 @@ public class Script_CrewMate : MonoBehaviour
     {
         if (GetComponent<Animator>()) { m_Animator = GetComponent<Animator>(); }
         m_GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        m_ResourcesUI = GameObject.FindGameObjectWithTag("ResourcePanel").GetComponent<Script_ResourcesUI>();
     }
 
     void FixedUpdate()
@@ -85,9 +87,17 @@ public class Script_CrewMate : MonoBehaviour
         }
 
         //Adjust stats
-        if (m_Rest > 0) { m_Rest -= 0.01f; } else { m_Rest = 0.0f; }
-        if (m_Hunger > 0) { m_Hunger -= 0.01f; } else { m_Hunger = 0.0f; }
+        if (m_Rest > 0) { m_Rest -= 0.005f; } else { m_Rest = 0.0f; }
+        if (m_Hunger > 0) { m_Hunger -= 0.005f; } else { m_Hunger = 0.0f; }
         if (m_Health > 100.0f) { m_Health = 100.0f; }
+
+        if (m_WorldTimer.m_UpdateHours && m_ResourcesUI.m_Food > 0 && m_Hunger < 100.0f)
+        {
+            if (m_Hunger < 50.0f) { m_Hunger += 10.0f; }
+            if (m_ResourcesUI.m_ChefInKitchen) { m_Hunger += 10.0f; }
+
+            m_ResourcesUI.m_Food--;
+        }
 
         if (m_Rest == 0 || m_Hunger == 0) { m_Health -= 1; }
 

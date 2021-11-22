@@ -11,11 +11,22 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
+        foreach (GameObject Level in m_Levels) { Level.SetActive(false); }
+        m_Levels[m_LevelIndex].SetActive(true);
     }
 
     void Update()
     {
         
+    }
+
+    public void UpgradeShip()
+    {
+        if (m_LevelIndex < m_Levels.Length)
+        {
+            m_Levels[m_LevelIndex].SetActive(false);
+            m_LevelIndex++;
+            m_Levels[m_LevelIndex].SetActive(true);
+        }
     }
 }

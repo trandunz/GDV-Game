@@ -186,7 +186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd077e43f377a04bb3ce475792d24c4, type: 3}
   m_Name: JohnDoe
   m_EditorClassIdentifier: 
-  m_GameManager: {fileID: 0}
   m_CrewmateName: John Doe
   m_MateState: 0
   m_Mood: 2
@@ -195,7 +194,7 @@ MonoBehaviour:
   m_Rest: 100
   m_RestProgression: 0
   m_Health: 100
-  m_Hunger: 100
+  m_Hunger: 50
   m_GroundLayer:
     serializedVersion: 2
     m_Bits: 1280

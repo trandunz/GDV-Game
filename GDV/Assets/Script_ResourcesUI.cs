@@ -10,6 +10,8 @@ public class Script_ResourcesUI : MonoBehaviour
     public int m_Food = 0;
     public int m_ShipCondition = 50;
     public int m_BeastHunger = 0;
+    public bool m_ReadyToSearch = false;
+    public bool m_ChefInKitchen = false;
 
     [SerializeField] TMPro.TextMeshProUGUI m_MetalText;
     [SerializeField] TMPro.TextMeshProUGUI m_FoodText;

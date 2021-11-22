@@ -12,7 +12,7 @@ public class Script_WorldTimer : MonoBehaviour
     string m_Text;
     public int m_Day = 0;
     [SerializeField] float m_DebugSpeedup = 1.0f;
-    bool m_UpdateHours = false;
+    public bool m_UpdateHours = false;
     void LateUpdate()
     {
         m_Text = "";
@@ -73,6 +73,6 @@ public class Script_WorldTimer : MonoBehaviour
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(2);
-        m_UpdateHours = true;
+        if (m_Minutes % 60 == 0) { m_UpdateHours = true; }
     }
 }
