@@ -42,11 +42,11 @@ public class Script_ResourcesUI : MonoBehaviour
                 GetComponent<Animator>().SetTrigger("Hide");
             }
         }
-
-        m_MetalText.text = "Metal: " + m_Metal;
-        m_FoodText.text = "Food: " + m_Food;
-        m_ShipConditionText.text = "Condition: " + m_ShipCondition;
-        m_BeastHungerText.text = "Hunger: " + m_BeastHunger;
+                           
+        m_MetalText.text = "                " + m_Metal;
+        m_FoodText.text = "              " + m_Food;
+        m_ShipConditionText.text = "                 " + m_ShipCondition;
+        m_BeastHungerText.text = "Beast Hunger: " + m_BeastHunger;
     }
     public void IncreaseShipCondition(int _amount)
     {

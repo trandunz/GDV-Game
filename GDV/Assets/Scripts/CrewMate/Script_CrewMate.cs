@@ -48,12 +48,15 @@ public class Script_CrewMate : MonoBehaviour
 
     protected Animator m_Animator;
 
+    protected Script_ProgressionBar m_HealthBar;
+
 
     void Start()
     {
         if (GetComponent<Animator>()) { m_Animator = GetComponent<Animator>(); }
         m_GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         m_ResourcesUI = GameObject.FindGameObjectWithTag("ResourcePanel").GetComponent<Script_ResourcesUI>();
+        m_HealthBar = GetComponentInChildren<Script_ProgressionBar>();
     }
 
     void FixedUpdate()
@@ -121,6 +124,11 @@ public class Script_CrewMate : MonoBehaviour
                 m_Animator.SetBool("Interact", true);
             }
         }
+    }
+
+    private void LateUpdate()
+    {
+        m_HealthBar.Value = m_Health;
     }
 
     bool IsGrounded()
