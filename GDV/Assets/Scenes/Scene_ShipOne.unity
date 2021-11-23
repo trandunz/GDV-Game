@@ -11531,6 +11531,11 @@ PrefabInstance:
       propertyPath: m_DayText
       value: 
       objectReference: {fileID: 236719190}
+    - target: {fileID: 5575367668743746959, guid: 98afbe6e5488e98498f7d9c69f570466,
+        type: 3}
+      propertyPath: m_DebugSpeedup
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8974258009042662452, guid: 98afbe6e5488e98498f7d9c69f570466,
         type: 3}
       propertyPath: m_LocalPosition.z

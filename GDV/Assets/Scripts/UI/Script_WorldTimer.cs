@@ -72,7 +72,7 @@ public class Script_WorldTimer : MonoBehaviour
 
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(2);
-        if (m_Minutes % 60 == 0) { m_UpdateHours = true; }
+        yield return new WaitForSeconds(1);
+        m_UpdateHours = true;
     }
 }
