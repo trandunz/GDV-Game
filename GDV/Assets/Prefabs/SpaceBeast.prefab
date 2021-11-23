@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d507cf7c4c0b9f14ebdec7d950c440f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DigestionRate_s: 1
+  m_DigestionRate_s: 0.5
 --- !u!212 &1862515658773332589
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e4e6ea9d9c092f47824294a1f7fc49a, type: 2}
+  - {fileID: 2100000, guid: ff89756f0a47f7441b3ab28a551033e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.65625, y: 1.703125}
+  m_Size: {x: 1.328125, y: 0.8515625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

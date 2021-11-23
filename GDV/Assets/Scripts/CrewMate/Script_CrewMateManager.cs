@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Script_CrewMateManager : MonoBehaviour
 {
@@ -50,5 +51,10 @@ public class Script_CrewMateManager : MonoBehaviour
             m_SelectedCrewmate.transform.position = CursorWorldPosition + new Vector3(m_DraggedCrewmateOffset.x, m_DraggedCrewmateOffset.y, m_SelectedCrewmate.transform.position.z);
             m_SelectedCrewmate.transform.position = new Vector3(m_SelectedCrewmate.transform.position.x, m_SelectedCrewmate.transform.position.y, -1.0f);
         }
+    }
+
+    public void LossCondition()
+    {
+        SceneManager.LoadSceneAsync(0);
     }
 }

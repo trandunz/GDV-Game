@@ -561,7 +561,7 @@ MonoBehaviour:
   m_WorldTimerText: {fileID: 7876124445531889971}
   m_DayText: {fileID: 236719190}
   m_Day: 0
-  m_DebugSpeedup: 1
+  m_DebugSpeedup: 25
   m_UpdateHours: 0
 --- !u!1 &6796798570346521277
 GameObject:
@@ -1328,6 +1328,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 29.500061
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126246694474445430, guid: e0e6a6cb3f79a1e4aa3c1010016726b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.2999992
       objectReference: {fileID: 0}
     - target: {fileID: 2460039429523099778, guid: e0e6a6cb3f79a1e4aa3c1010016726b1,
         type: 3}
