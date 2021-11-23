@@ -48,12 +48,15 @@ public class Script_CrewMate : MonoBehaviour
 
     protected Animator m_Animator;
 
+    protected Script_ProgressionBar m_HealthBar;
+
 
     void Start()
     {
         if (GetComponent<Animator>()) { m_Animator = GetComponent<Animator>(); }
         m_GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         m_ResourcesUI = GameObject.FindGameObjectWithTag("ResourcePanel").GetComponent<Script_ResourcesUI>();
+        m_HealthBar = GetComponentInChildren<Script_ProgressionBar>();
     }
 
     void FixedUpdate()
@@ -93,10 +96,8 @@ public class Script_CrewMate : MonoBehaviour
 
         if (m_WorldTimer.m_UpdateHours && m_ResourcesUI.m_Food > 0 && m_Hunger < 100.0f)
         {
-            if (m_Hunger < 50.0f) { m_Hunger += 10.0f; }
-            if (m_ResourcesUI.m_ChefInKitchen) { m_Hunger += 10.0f; }
-
-            m_ResourcesUI.m_Food--;
+            StopCoroutine(EatFood());
+            StartCoroutine(EatFood());
         }
 
         if (m_Rest == 0 || m_Hunger == 0) { m_Health -= 1; }
@@ -125,6 +126,11 @@ public class Script_CrewMate : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        m_HealthBar.Value = m_Health;
+    }
+
     bool IsGrounded()
     {
         return Physics2D.OverlapCircle(transform.position + new Vector3(0, -0.3f, 0), 0.25f, m_GroundLayer);
@@ -141,5 +147,14 @@ public class Script_CrewMate : MonoBehaviour
         }
 
         return false;
+    }
+
+    IEnumerator EatFood()
+    {
+        yield return new WaitForSeconds(0.1f);
+        m_Hunger += 10.0f;
+        if (m_ResourcesUI.m_ChefInKitchen) { m_Hunger += 10.0f; }
+
+        m_ResourcesUI.m_Food--;
     }
 }

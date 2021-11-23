@@ -16,7 +16,6 @@ public class ProgressionBar : MonoBehaviour
     [SerializeField]
     private float Interpolation;
 
-
     void Start()
     {
         Slider = transform.GetChild(0).GetComponent<Slider>();
@@ -32,9 +31,10 @@ public class ProgressionBar : MonoBehaviour
         {
             SetHealth();
         }
+
     }
 
-    public void SetHealth()
+    private void SetHealth()
     {
         Slider.value = Mathf.Lerp(Slider.value, TargetValue, Interpolation * Time.deltaTime);
         Bar.color = Gradient.Evaluate(Slider.normalizedValue);
