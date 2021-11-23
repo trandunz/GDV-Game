@@ -48,7 +48,9 @@ public class Script_CrewMate : MonoBehaviour
 
     protected Animator m_Animator;
 
-    protected Script_ProgressionBar m_HealthBar;
+    protected Script_ProgressionBar[] m_StatusBars;
+
+    [SerializeField] protected Animator m_TaskInProgressCog;
 
 
     void Start()
@@ -56,7 +58,7 @@ public class Script_CrewMate : MonoBehaviour
         if (GetComponent<Animator>()) { m_Animator = GetComponent<Animator>(); }
         m_GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         m_ResourcesUI = GameObject.FindGameObjectWithTag("ResourcePanel").GetComponent<Script_ResourcesUI>();
-        m_HealthBar = GetComponentInChildren<Script_ProgressionBar>();
+        m_StatusBars = GetComponentsInChildren<Script_ProgressionBar>();
     }
 
     void FixedUpdate()
@@ -90,7 +92,15 @@ public class Script_CrewMate : MonoBehaviour
         }
 
         //Adjust stats
-        if (m_Rest > 0) { m_Rest -= 0.005f; } else { m_Rest = 0.0f; }
+        if (m_RestProgression <= 2)
+        {
+            if (m_Rest > 0) { m_Rest -= 0.005f; } else { m_Rest = 0.0f; }
+        }
+        else
+        {
+            if (m_Rest > 0) { m_Rest += 0.005f; } else { m_Rest = 0.0f; }
+        }
+        
         if (m_Hunger > 0) { m_Hunger -= 0.005f; } else { m_Hunger = 0.0f; }
         if (m_Health > 100.0f) { m_Health = 100.0f; }
 
@@ -124,11 +134,23 @@ public class Script_CrewMate : MonoBehaviour
                 m_Animator.SetBool("Interact", true);
             }
         }
+
+        if (m_RestProgression > 2 || m_MateState == MATESTATE.DOING)
+        {
+            m_TaskInProgressCog.SetBool("InProgress", true);
+        }
+        else
+        {
+            m_TaskInProgressCog.SetBool("InProgress", false);
+        }
     }
 
     private void LateUpdate()
     {
-        m_HealthBar.Value = m_Health;
+        m_StatusBars[0].Value = m_Health;
+        m_StatusBars[1].Value = m_Energy;
+        m_StatusBars[2].Value = m_Rest;
+        m_StatusBars[3].Value = m_Hunger;
     }
 
     bool IsGrounded()

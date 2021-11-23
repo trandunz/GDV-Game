@@ -4280,6 +4280,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1413362521}
     m_Modifications:
+    - target: {fileID: 1933372495071597962, guid: 9f1c49f5a91b4d6488747141a1439e32,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933372495071597962, guid: 9f1c49f5a91b4d6488747141a1439e32,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2435780891041068972, guid: 9f1c49f5a91b4d6488747141a1439e32,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -4353,6 +4363,26 @@ PrefabInstance:
     - target: {fileID: 5711870266306607914, guid: 9f1c49f5a91b4d6488747141a1439e32,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382192017825043089, guid: 9f1c49f5a91b4d6488747141a1439e32,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382192017825043089, guid: 9f1c49f5a91b4d6488747141a1439e32,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941225812165849729, guid: 9f1c49f5a91b4d6488747141a1439e32,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941225812165849729, guid: 9f1c49f5a91b4d6488747141a1439e32,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7105,6 +7135,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1413362521}
     m_Modifications:
+    - target: {fileID: 694193650586998111, guid: b1dd9e4d70582a348a7dd8f15fbaf5e7,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 694193650586998111, guid: b1dd9e4d70582a348a7dd8f15fbaf5e7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2489398384163533767, guid: b1dd9e4d70582a348a7dd8f15fbaf5e7,
         type: 3}
       propertyPath: m_WorldTimer
@@ -7170,12 +7210,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: Will Inman Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4540959298071868751, guid: b1dd9e4d70582a348a7dd8f15fbaf5e7,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540959298071868751, guid: b1dd9e4d70582a348a7dd8f15fbaf5e7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5069648485241901170, guid: b1dd9e4d70582a348a7dd8f15fbaf5e7,
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5069648485241901170, guid: b1dd9e4d70582a348a7dd8f15fbaf5e7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9025807068222714452, guid: b1dd9e4d70582a348a7dd8f15fbaf5e7,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9025807068222714452, guid: b1dd9e4d70582a348a7dd8f15fbaf5e7,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -11336,6 +11396,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2373992301940725607, guid: 98afbe6e5488e98498f7d9c69f570466,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.2999954
+      objectReference: {fileID: 0}
+    - target: {fileID: 8974258009042662452, guid: 98afbe6e5488e98498f7d9c69f570466,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8974258009224851123, guid: 98afbe6e5488e98498f7d9c69f570466,
         type: 3}
       propertyPath: m_RootOrder
