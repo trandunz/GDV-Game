@@ -93,10 +93,8 @@ public class Script_CrewMate : MonoBehaviour
 
         if (m_WorldTimer.m_UpdateHours && m_ResourcesUI.m_Food > 0 && m_Hunger < 100.0f)
         {
-            if (m_Hunger < 50.0f) { m_Hunger += 10.0f; }
-            if (m_ResourcesUI.m_ChefInKitchen) { m_Hunger += 10.0f; }
-
-            m_ResourcesUI.m_Food--;
+            StopCoroutine(EatFood());
+            StartCoroutine(EatFood());
         }
 
         if (m_Rest == 0 || m_Hunger == 0) { m_Health -= 1; }
@@ -141,5 +139,14 @@ public class Script_CrewMate : MonoBehaviour
         }
 
         return false;
+    }
+
+    IEnumerator EatFood()
+    {
+        yield return new WaitForSeconds(0.1f);
+        m_Hunger += 10.0f;
+        if (m_ResourcesUI.m_ChefInKitchen) { m_Hunger += 10.0f; }
+
+        m_ResourcesUI.m_Food--;
     }
 }
