@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Chef
+  m_Controller: {fileID: 9100000, guid: 2b81ff8ccda7b314ab4474ec858bdc9c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: fafdbb71ad3294442a5caf1b29b6947e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2a468a25c9279fe4985f0ccbab43982b, type: 2}
