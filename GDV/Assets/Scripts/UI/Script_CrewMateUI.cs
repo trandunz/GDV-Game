@@ -64,7 +64,11 @@ public class Script_CrewMateUI : MonoBehaviour
             }
         }
 
-        UpdateCrewMateStats();
-        CheckForEmptyPanel();
+        if (m_CrewMatePanelScripts.Count > 0)
+        {
+            UpdateCrewMateStats();
+            CheckForEmptyPanel();
+        }
+        
     }
 }
