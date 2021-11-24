@@ -218,6 +218,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  m_TaskInProgressCog: {fileID: 3151510104123279853}
 --- !u!1 &5690380107045582465
 GameObject:
   m_ObjectHideFlags: 0
