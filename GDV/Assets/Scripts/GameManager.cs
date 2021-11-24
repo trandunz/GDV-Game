@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public int m_LevelIndex;
     public GameObject[] m_Levels;
-    public GameObject[] m_Stations;
 
     public Script_CrewMateManager m_CrewMateManager;
 
@@ -14,9 +13,6 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject Level in m_Levels) { Level.SetActive(false); }
         m_Levels[m_LevelIndex].SetActive(true);
-
-        foreach (GameObject Level in m_Stations) { Level.SetActive(false); }
-        m_Stations[m_LevelIndex].SetActive(true);
     }
 
     void Update()
@@ -34,7 +30,6 @@ public class GameManager : MonoBehaviour
             m_Levels[m_LevelIndex].SetActive(false);
             m_LevelIndex++;
             m_Levels[m_LevelIndex].SetActive(true);
-            m_Stations[m_LevelIndex].SetActive(true);
         }
     }
 }
