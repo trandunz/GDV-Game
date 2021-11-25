@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9e637804d95bd8947a8fadbd8b45437a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_ProgressTextGameObject: {instanceID: 0}
+  - m_SoundPrefab: {fileID: 6999175025967680886, guid: 1533ebc70a60a8c4d9f7aace53a7db08,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Metal: 0
-  m_Food: 0
+  m_Food: 50
   m_ShipCondition: 50
   m_BeastHunger: 0
   m_ReadyToSearch: 0

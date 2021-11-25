@@ -11,7 +11,6 @@ public class Script_CrewMateManager : MonoBehaviour
     public GameObject m_SelectedCrewmate;
     private Vector2 m_DraggedCrewmateOffset;
 
-
     void Start()
     {
         m_CrewMates = GameObject.FindGameObjectsWithTag("CrewMate");

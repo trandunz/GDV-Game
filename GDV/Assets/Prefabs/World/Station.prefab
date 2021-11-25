@@ -541,7 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5606924826547625420}
   - component: {fileID: 5606924826547625417}
-  - component: {fileID: 5606924826547625416}
+  - component: {fileID: 5310343377242144727}
   m_Layer: 0
   m_Name: Station
   m_TagString: Untagged
@@ -591,7 +591,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5606924826547625416
+--- !u!114 &5310343377242144727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -600,7 +600,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5606924826547625415}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d96e16f20fab5b4ebbd86783bfafda2, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e637804d95bd8947a8fadbd8b45437a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Progress: 0
@@ -612,3 +612,7 @@ MonoBehaviour:
   m_Sprites:
   - {fileID: 1371715921116812759}
   - {fileID: 3974816622033127156}
+  m_SoundPrefab: {fileID: 6999175025967680886, guid: 1533ebc70a60a8c4d9f7aace53a7db08,
+    type: 3}
+  m_FixStation: {fileID: 8300000, guid: 9ad420d74a35b034881fdb95811f7b71, type: 3}
+  m_ReadyToSearch: {fileID: 8300000, guid: d1d6ad9d4abacdd4a98465026e1f2caa, type: 3}

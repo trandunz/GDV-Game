@@ -8,6 +8,9 @@ TextureImporter:
   - first:
       213: -1973245439726091382
     second: ShipTilemap_1
+  - first:
+      213: -5632610695663053586
+    second: ShipTilemap_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,7 +100,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -118,7 +121,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -130,6 +133,27 @@ TextureImporter:
       bones: []
       spriteID: a83877e2abf9d94e0800000000000000
       internalID: -1973245439726091382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShipTilemap_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee410f64a62f4d1b0800000000000000
+      internalID: -5632610695663053586
       vertices: []
       indices: 
       edges: []

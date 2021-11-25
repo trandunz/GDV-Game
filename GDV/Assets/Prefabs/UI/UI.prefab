@@ -561,7 +561,7 @@ MonoBehaviour:
   m_WorldTimerText: {fileID: 7876124445531889971}
   m_DayText: {fileID: 236719190}
   m_Day: 0
-  m_DebugSpeedup: 25
+  m_DebugSpeedup: 1
   m_UpdateHours: 0
 --- !u!1 &6796798570346521277
 GameObject:
@@ -962,8 +962,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 64
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 2560, y: 1440}
   m_ScreenMatchMode: 2
@@ -1332,7 +1332,7 @@ PrefabInstance:
     - target: {fileID: 1126246694474445430, guid: e0e6a6cb3f79a1e4aa3c1010016726b1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.2999992
+      value: -1.2999954
       objectReference: {fileID: 0}
     - target: {fileID: 2460039429523099778, guid: e0e6a6cb3f79a1e4aa3c1010016726b1,
         type: 3}

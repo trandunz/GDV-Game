@@ -13,6 +13,7 @@ public class Script_WorldTimer : MonoBehaviour
     public int m_Day = 0;
     [SerializeField] float m_DebugSpeedup = 1.0f;
     public bool m_UpdateHours = false;
+    
     void LateUpdate()
     {
         m_Text = "";
