@@ -5108,11 +5108,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2597310930709838315, guid: d5c66e115d40dab4ca028245e4b1faa6,
         type: 3}
-      propertyPath: m_LevelIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2597310930709838315, guid: d5c66e115d40dab4ca028245e4b1faa6,
-        type: 3}
       propertyPath: m_CrewMateManager
       value: 
       objectReference: {fileID: 1413362520}
