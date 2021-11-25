@@ -36,17 +36,12 @@ public class Script_Station : MonoBehaviour
     [SerializeField] GameObject m_SoundPrefab;
     [SerializeField] AudioClip m_FixStation;
     [SerializeField] AudioClip m_ReadyToSearch;
-    [SerializeField] AudioClip m_Sparks;
-
-    [SerializeField] GameObject m_Audio;
 
     private void Start()
     {
         m_ResourcesUI = GameObject.FindGameObjectWithTag("ResourcePanel").GetComponent<Script_ResourcesUI>();
 
         m_ProgressText = m_ProgressTextGameObject.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>();
-
-
     }
 
     void Update()
@@ -72,17 +67,6 @@ public class Script_Station : MonoBehaviour
                             m_MaxProgress = 10;
                             m_Progress += Time.deltaTime * (m_OccupantNumber - (int)SpecialistNumber);
                             m_Progress += Time.deltaTime * SpecialistNumber * 2.0f;
-
-                            if (!m_Audio)
-                            {
-                                m_Audio = Instantiate(m_SoundPrefab, transform);
-                            }
-                            if (!m_Audio.GetComponent<AudioSource>().isPlaying)
-                            {
-                                m_Audio.GetComponent<AudioSource>().clip = m_Sparks;
-                                m_Audio.GetComponent<AudioSource>().volume = 0.2f;
-                                m_Audio.GetComponent<AudioSource>().Play();
-                            }
                             break;
                         }
                     case STATIONTYPE.COCKPIT:
@@ -194,14 +178,6 @@ public class Script_Station : MonoBehaviour
             //When a task from the station has been finished
             else if (m_Progress > m_MaxProgress)
             {
-                if (!m_Audio)
-                {
-                    m_Audio = Instantiate(m_SoundPrefab, transform);
-                }
-                if (m_Audio.GetComponent<AudioSource>().isPlaying)
-                {
-                    m_Audio.GetComponent<AudioSource>().Stop();
-                }
                 switch (m_StationType)
                 {
                     case STATIONTYPE.BROKEN:
