@@ -5108,6 +5108,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2597310930709838315, guid: d5c66e115d40dab4ca028245e4b1faa6,
         type: 3}
+      propertyPath: m_LevelIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2597310930709838315, guid: d5c66e115d40dab4ca028245e4b1faa6,
+        type: 3}
       propertyPath: m_CrewMateManager
       value: 
       objectReference: {fileID: 1413362520}
@@ -7399,7 +7404,7 @@ PrefabInstance:
     - target: {fileID: 4596440958504312639, guid: 847bfa5b291dd8d42b9b7ae523ea36e9,
         type: 3}
       propertyPath: m_CrewmateName
-      value: William
+      value: Michael
       objectReference: {fileID: 0}
     - target: {fileID: 6565907928064982154, guid: 847bfa5b291dd8d42b9b7ae523ea36e9,
         type: 3}
@@ -12831,11 +12836,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1425993125}
-    - target: {fileID: 5648944356538528159, guid: 98afbe6e5488e98498f7d9c69f570466,
-        type: 3}
-      propertyPath: m_Metal
-      value: 800
-      objectReference: {fileID: 0}
     - target: {fileID: 8822366986971523583, guid: 98afbe6e5488e98498f7d9c69f570466,
         type: 3}
       propertyPath: m_AnchoredPosition.x
