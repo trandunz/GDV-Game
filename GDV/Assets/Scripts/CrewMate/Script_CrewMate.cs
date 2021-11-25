@@ -51,6 +51,9 @@ public class Script_CrewMate : MonoBehaviour
     protected Script_ProgressionBar[] m_StatusBars;
 
     [SerializeField] protected Animator m_TaskInProgressCog;
+    [SerializeField] protected Animator m_TaskFailedCog;
+    [SerializeField] protected Animator m_SleepingCog;
+    [SerializeField] protected Animator m_LowHealthCog;
 
 
     void Start()
@@ -135,13 +138,30 @@ public class Script_CrewMate : MonoBehaviour
             }
         }
 
-        if (m_RestProgression > 2 || m_MateState == MATESTATE.DOING)
+        if (m_RestProgression > 2 )
+        {
+            m_SleepingCog.SetBool("InProgress", true);
+        }
+        if (m_Health < 25.0f)
+        {
+            m_LowHealthCog.SetBool("InProgress", true);
+        }
+        else if (m_MateState == MATESTATE.ONROUTE)
+        {
+            m_TaskFailedCog.SetBool("InProgress", true);
+            m_TaskInProgressCog.SetBool("InProgress", false);
+        }
+        else if (m_MateState == MATESTATE.DOING)
         {
             m_TaskInProgressCog.SetBool("InProgress", true);
+            m_TaskFailedCog.SetBool("InProgress", false);
         }
         else
         {
             m_TaskInProgressCog.SetBool("InProgress", false);
+            m_SleepingCog.SetBool("InProgress", false);
+            m_TaskFailedCog.SetBool("InProgress", false);
+            m_LowHealthCog.SetBool("InProgress", false);
         }
     }
 
