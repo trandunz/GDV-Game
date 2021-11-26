@@ -62,6 +62,7 @@ public class Script_CrewMate : MonoBehaviour
         m_GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         m_ResourcesUI = GameObject.FindGameObjectWithTag("ResourcePanel").GetComponent<Script_ResourcesUI>();
         m_StatusBars = GetComponentsInChildren<Script_ProgressionBar>();
+        m_WorldTimer = GameObject.FindObjectOfType<Script_WorldTimer>();
     }
 
     void FixedUpdate()

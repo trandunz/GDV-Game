@@ -27,15 +27,15 @@ RectTransform:
   m_GameObject: {fileID: 1371715921116812759}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3711950073479097138}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3, y: 1.5}
+  m_AnchoredPosition: {x: 0, y: 1.5}
+  m_SizeDelta: {x: 6, y: 3}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7705485222047630748
 CanvasRenderer:
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9066aa78d8a41e943ac9cfc4d20d0157, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2434be4524c307443ab0e1363c125725, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -241,8 +241,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 4, y: 2}
+  m_AnchoredPosition: {x: 0, y: 1.5}
+  m_SizeDelta: {x: 6, y: 3}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2221994283872441551
 CanvasRenderer:
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b95910cdba4baac40a33ab8384822396, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ecac8f9ef54cf5498f86635e9fd7aee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -320,7 +320,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3, y: 1.5}
+  m_SizeDelta: {x: 5.6, y: 1.5}
   m_Pivot: {x: 0, y: 1}
 --- !u!223 &7423202746189731339
 Canvas:
@@ -341,7 +341,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!222 &8506093750899978171
 CanvasRenderer:
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_ProgressTextGameObject: {fileID: 4555662389688038397}
   m_CurrentlyOccupying: []
   m_StationType: 1
-  m_PostRepairType: 0
+  m_PostRepairType: 8
   m_Sprites:
   - {fileID: 1371715921116812759}
   - {fileID: 3974816622033127156}
@@ -616,3 +616,4 @@ MonoBehaviour:
     type: 3}
   m_FixStation: {fileID: 8300000, guid: 9ad420d74a35b034881fdb95811f7b71, type: 3}
   m_ReadyToSearch: {fileID: 8300000, guid: d1d6ad9d4abacdd4a98465026e1f2caa, type: 3}
+  m_Sparks: {fileID: 0}

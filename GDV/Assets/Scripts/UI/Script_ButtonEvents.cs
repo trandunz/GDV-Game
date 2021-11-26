@@ -8,7 +8,7 @@ public class Script_ButtonEvents : MonoBehaviour
 {
     [SerializeField] Slider m_Audio;
     [SerializeField] Button m_Apply;
-
+    [SerializeField] TMPro.TMP_Dropdown m_Dropdown;
     public void StartNewGame()
     {
         SceneManager.LoadSceneAsync(1);
@@ -78,38 +78,38 @@ public class Script_ButtonEvents : MonoBehaviour
     {
         if (Screen.fullScreen == true)
         {
-            if (GetComponentInChildren<TMPro.TMP_Dropdown>().value == 0)
+            if (m_Dropdown.value == 0)
             {
                 Screen.SetResolution(1280, 720, true);
             }
-            else if (GetComponentInChildren<TMPro.TMP_Dropdown>().value == 1)
+            else if (m_Dropdown.value == 1)
             {
                 Screen.SetResolution(1366, 768, true);
             }
-            else if (GetComponentInChildren<TMPro.TMP_Dropdown>().value == 2)
+            else if (m_Dropdown.value == 2)
             {
                 Screen.SetResolution(1920, 1080, true);
             }
-            else if (GetComponentInChildren<TMPro.TMP_Dropdown>().value == 3)
+            else if (m_Dropdown.value == 3)
             {
                 Screen.SetResolution(2560, 1440, true);
             }
         }
         else
         {
-            if (GetComponentInChildren<TMPro.TMP_Dropdown>().value == 0)
+            if (m_Dropdown.value == 0)
             {
                 Screen.SetResolution(1280, 720, false);
             }
-            else if (GetComponentInChildren<TMPro.TMP_Dropdown>().value == 1)
+            else if (m_Dropdown.value == 1)
             {
                 Screen.SetResolution(1366, 768, false);
             }
-            else if (GetComponentInChildren<TMPro.TMP_Dropdown>().value == 2)
+            else if (m_Dropdown.value == 2)
             {
                 Screen.SetResolution(1920, 1080, false);
             }
-            else if (GetComponentInChildren<TMPro.TMP_Dropdown>().value == 3)
+            else if (m_Dropdown.value == 3)
             {
                 Screen.SetResolution(2560, 1440, false);
             }

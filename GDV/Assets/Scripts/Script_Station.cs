@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Script_Station : MonoBehaviour
 {
-    enum STATIONTYPE
+    public enum STATIONTYPE
     {
         UNASSIGNED = 0,
 
@@ -14,7 +14,8 @@ public class Script_Station : MonoBehaviour
         MEDBAY,
         BUNKROOM,
         KITCHEN,
-        FARM
+        FARM,
+        ENDGAME
     };
 
     [SerializeField] float m_Progress = 0.0f;
@@ -27,11 +28,11 @@ public class Script_Station : MonoBehaviour
     int m_OccupantNumber = 0;
 
     [SerializeField] STATIONTYPE m_StationType = STATIONTYPE.UNASSIGNED;
-    [SerializeField] STATIONTYPE m_PostRepairType = STATIONTYPE.UNASSIGNED;
+    public STATIONTYPE m_PostRepairType = STATIONTYPE.UNASSIGNED;
 
     Script_ResourcesUI m_ResourcesUI;
 
-    [SerializeField] GameObject[] m_Sprites;
+    public GameObject[] m_Sprites;
 
     [SerializeField] GameObject m_SoundPrefab;
     [SerializeField] AudioClip m_FixStation;
@@ -161,6 +162,15 @@ public class Script_Station : MonoBehaviour
                                 foreach (GameObject item in m_CurrentlyOccupying)
                                 {
                                     item.GetComponent<Script_CrewMate>().m_MateState = Script_CrewMate.MATESTATE.ONROUTE;
+
+                                    if (GameObject.FindObjectOfType<Script_MissionUI>().m_MissionInProgress)
+                                    {
+                                        m_Sprites[2].SetActive(false);
+                                    }
+                                    else if (!GameObject.FindObjectOfType<Script_MissionUI>().m_MissionInProgress)
+                                    {
+                                        m_Sprites[2].SetActive(true);
+                                    }
                                 }
                             }
 
@@ -229,6 +239,37 @@ public class Script_Station : MonoBehaviour
                             }
                             break;
                         }
+                    case STATIONTYPE.ENDGAME:
+                        {
+                            if (!m_ResourcesUI.m_ReadyToSearch)
+                            {
+                                uint SpecialistNumber = 0;
+                                foreach (GameObject CrewMate in m_CurrentlyOccupying)
+                                {
+                                    if (CrewMate.GetComponent<Script_CrewMate>().m_CrewClass == Script_CrewMate.CREWCLASS.ENGINEER)
+                                    {
+                                        SpecialistNumber++;
+                                    }
+                                }
+
+                                m_MaxProgress = 30;
+                                m_Progress += Time.deltaTime * (m_OccupantNumber - (int)SpecialistNumber);
+                                m_Progress += Time.deltaTime * SpecialistNumber * 2.0f;
+
+                                foreach (GameObject item in m_CurrentlyOccupying)
+                                {
+                                    item.GetComponent<Script_CrewMate>().m_MateState = Script_CrewMate.MATESTATE.DOING;
+                                }
+                            }
+                            else
+                            {
+                                foreach (GameObject item in m_CurrentlyOccupying)
+                                {
+                                    item.GetComponent<Script_CrewMate>().m_MateState = Script_CrewMate.MATESTATE.ONROUTE;
+                                }
+                            }
+                            break;
+                        }
                     default:
                         break;
                 }
@@ -269,8 +310,8 @@ public class Script_Station : MonoBehaviour
                     case STATIONTYPE.ENGINEERINGBAY:
                         {
                             m_ResourcesUI.m_ReadyToSearch = true;
-                            m_Sprites[1].SetActive(false);
-                            m_Sprites[2].SetActive(true);
+                            m_Sprites[0].SetActive(false);
+                            m_Sprites[1].SetActive(true);
 
                             GameObject SoundGameObject = Instantiate(m_SoundPrefab);
                             SoundGameObject.GetComponent<AudioSource>().clip = m_ReadyToSearch;
@@ -290,6 +331,11 @@ public class Script_Station : MonoBehaviour
                                 }
                                 Food--;
                             }
+                            break;
+                        }
+                    case STATIONTYPE.ENDGAME:
+                        {
+                            GameObject.FindObjectOfType<GameManager>().UpgradeShip();
                             break;
                         }
                     default:

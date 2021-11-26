@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        if (m_LevelIndex + 1 != m_Levels.Length)
         {
             UpgradeShip();
         }

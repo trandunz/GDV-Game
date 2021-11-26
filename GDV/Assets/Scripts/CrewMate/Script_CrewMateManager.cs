@@ -11,6 +11,8 @@ public class Script_CrewMateManager : MonoBehaviour
     public GameObject m_SelectedCrewmate;
     private Vector2 m_DraggedCrewmateOffset;
 
+    [SerializeField] GameObject[] m_CrewmatePrefabs;
+
     void Start()
     {
         m_CrewMates = GameObject.FindGameObjectsWithTag("CrewMate");
@@ -49,6 +51,37 @@ public class Script_CrewMateManager : MonoBehaviour
             m_SelectedCrewmate.GetComponent<Rigidbody2D>().velocity = new Vector2(m_SelectedCrewmate.GetComponent<Rigidbody2D>().velocity.x, 0.0f);
             m_SelectedCrewmate.transform.position = CursorWorldPosition + new Vector3(m_DraggedCrewmateOffset.x, m_DraggedCrewmateOffset.y, m_SelectedCrewmate.transform.position.z);
             m_SelectedCrewmate.transform.position = new Vector3(m_SelectedCrewmate.transform.position.x, m_SelectedCrewmate.transform.position.y, -1.0f);
+        }
+    }
+
+    public void AddCrewMate(string _type)
+    {
+        switch (_type)
+        {
+            case "William":
+                {
+
+                    m_CrewMates[m_CrewMates.Length] = Instantiate(m_CrewmatePrefabs[0]);
+                    break;
+                }
+            case "Michael":
+                {
+                    m_CrewMates[m_CrewMates.Length] = Instantiate(m_CrewmatePrefabs[1]);
+                    break;
+                }
+            case "Jerome":
+                {
+                    m_CrewMates[m_CrewMates.Length] = Instantiate(m_CrewmatePrefabs[2]);
+                    break;
+                }
+            case "Bradan":
+                {
+                    m_CrewMates[m_CrewMates.Length] = Instantiate(m_CrewmatePrefabs[3]);
+
+                    break;
+                }
+            default:
+                break;
         }
     }
 
